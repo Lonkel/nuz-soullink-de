@@ -9,7 +9,7 @@ export default function RunPage() {
   const { query } = useRouter()
   const id = query.runId as string | undefined
 
-  const [trainers, setTrainers]     = useState<string[]>([])
+  
   const [game, setGame]             = useState('')
   const [encounters, setEncounters] = useState<Encounter[]>([])
 
@@ -19,7 +19,7 @@ export default function RunPage() {
     const raw = localStorage.getItem(id)
     if (!raw) return
     const parsed = JSON.parse(decodeURIComponent(raw))
-    setTrainers(parsed.trainers)
+    
     setGame(parsed.game)
   }, [id])
 
