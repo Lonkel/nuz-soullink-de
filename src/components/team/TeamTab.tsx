@@ -6,6 +6,7 @@
 // ───────────────────────────────────────────────────────────────
 import { useState } from 'react'
 import { Pencil } from 'lucide-react'
+import TypeIcon from '@/components/ui/TypeIcon'
 
 import { useRun, Status } from '@/context/RunContext'
 import type { Encounter } from '@/context/RunContext'
@@ -37,7 +38,7 @@ export default function TeamTab() {
   return (
     <>
       {/* Damage-Chart */}
-      <table className="mb-6 w-full text-sm table-fixed">
+      <table className="mb-6 w-full text-sm">
         <tbody>
           {chartLabels.map(lbl => (
             <tr key={lbl} className="h-8">
@@ -144,9 +145,8 @@ export default function TeamTab() {
 
                     {/* Typ-Zelle */}
                     <td key={`type-${idx}`} className="p-2 text-center">
-                      {types.map(t => (
-                        <div key={t}>{t}</div>
-                      ))}
+                      {types.map(t => <TypeIcon key={t} type={t} />)
+}
                     </td>
                   </>
                 )

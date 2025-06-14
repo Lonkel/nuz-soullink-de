@@ -7,6 +7,7 @@
 // ───────────────────────────────────────────────────────────────
 import { useState } from 'react'
 import { Pencil, MinusCircle } from 'lucide-react'
+import TypeIcon from '@/components/ui/TypeIcon'
 
 import { useRun }    from '@/context/RunContext'
 import type { Encounter } from '@/context/RunContext'
@@ -30,7 +31,7 @@ export default function GraveTab() {
     setEncounters(prev => prev.filter(e => e.id !== id))
 
   return (
-    <table className="w-full text-sm table-fixed">
+    <table className="w-full text-sm">
       <thead>
         <tr className="bg-gray-700 text-white">
           <th className="p-2">Herkunft</th>
@@ -118,9 +119,8 @@ export default function GraveTab() {
 
                   {/* Typ-Zelle */}
                   <td key={`type-${idx}`} className="p-2 text-center">
-                    {types.map(t => (
-                      <div key={t}>{t}</div>
-                    ))}
+                    {types.map(t => <TypeIcon key={t} type={t} />)
+}
                   </td>
                 </>
               )

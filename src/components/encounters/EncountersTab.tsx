@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Pencil } from 'lucide-react'
 import { v4 as uuid } from 'uuid'
+import TypeIcon from '@/components/ui/TypeIcon'
 
 import { useRun, Status }  from '@/context/RunContext'
 import type { Encounter }  from '@/context/RunContext'
@@ -38,7 +39,7 @@ export default function EncountersTab() {
   /* ------- JSX ------- */
   return (
     <>
-      <table className="w-full text-sm table-fixed">
+      <table className="w-full text-sm">
         <thead>
           <tr className="bg-gray-700 text-white">
             <th className="p-2">Herkunft</th>
@@ -123,9 +124,8 @@ export default function EncountersTab() {
 
                     {/* Typ-Zelle */}
                     <td key={`type-${idx}`} className="p-2 text-sm text-center">
-                      {types.map((t) => (
-                        <div key={t}>{t}</div>
-                      ))}
+                      {types.map(t => <TypeIcon key={t} type={t} />)
+}
                     </td>
                   </>
                 )

@@ -31,7 +31,7 @@ export default function Layout() {
   const fullTitle = GAME_NAME[game] ?? game ?? '?'
 
   return (
-    <main className="max-w-5xl mx-auto p-6">
+    <main className="max-w-7xl mx-auto p-6">
       <h1 className="mb-6 text-2xl font-bold text-white">
         Soullink&nbsp;–&nbsp;Pokémon&nbsp;{fullTitle}
       </h1>
