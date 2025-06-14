@@ -33,7 +33,7 @@ export interface RunState {
   setTeam: Setter<Encounter[]>
 }
 
-const RunContext = createContext<RunState | null>(null)
+export const RunContext = createContext<RunState | null>(null)
 
 export const useRun = (): RunState => {
   const ctx = useContext(RunContext)
