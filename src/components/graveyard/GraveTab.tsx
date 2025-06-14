@@ -94,7 +94,7 @@ export default function GraveTab() {
                         <img
                           src={sprite(slot.name)}
                           alt={slot.name}
-                          className="h-12 mx-auto"
+                          className="h-24 mx-auto"
                         />
                         <Pencil
                           size={18}
