@@ -7,7 +7,7 @@ export interface PokemonSelectProps {
 }
 
 const fallback = [
-  'Bisasam'
+  ''
 ]
 
 export default function PokemonSelect({
