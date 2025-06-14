@@ -1,0 +1,2358 @@
+[
+  {
+    "Region": "Kanto",
+    "Ort": "Alabastia"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Vertania City"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Marmoria City"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Azuria City"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Orania City"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Prismania City"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Saffronia City"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Lavandia"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Fuchsania City"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Zinnoberinsel"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Indigo-Plateau"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 1"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 2"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 3"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 4"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 5"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 6"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 7"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 8"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 9"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 10"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 11"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 12"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 13"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 14"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 15"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 16"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 17"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 18"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 19"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 20"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 21"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 22"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 23"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 24"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 25"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 26"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 27"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Route 28"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Untergrundweg 5–6"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Untergrundweg 7–8"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Vertania-Wald"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Mondberg"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Felstunnel"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Azuria-Höhle"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Kraftwerk"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Pokémon-Turm"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Seeschauminseln"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Siegesstraße"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Zinnober-Vulkan"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Safari-Zone"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Silph Co."
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Rocket-Versteck (Prismania City)"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Rocket-Versteck (Saffronia City)"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "S.S. Anne"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Pokémon-Fanclub"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Pokémon-Villa"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Kampfzone"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Eiland Eins"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Eiland Zwei"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Eiland Drei"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Eiland Vier"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Eiland Fünf"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Eiland Sechs"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Eiland Sieben"
+  },
+  {
+    "Region": "Kanto",
+    "Ort": "Eiland Null"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Neuborkia"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Rosalia City"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Viola City"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Dukatia City"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Teak City"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Mahagonia City"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Ebenholz City"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Oliviana City"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Anemonia City"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 29"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 30"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 31"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 32"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 33"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 34"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 35"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 36"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 37"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 38"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 39"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 40"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 41"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 42"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 43"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 44"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 45"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 46"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 47"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Route 48"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Alph-Ruinen"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Knofensa-Turm"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Steineichenwald"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Felstunnel"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Dunkelhöhle"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Eispfad"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Strudelinseln"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Glockenturm"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Bronzeturm"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Drachenhöhle"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Teak-Tanztheater"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Radioturm Dukatia"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Radioturm Rosalia"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Team Rocket Versteck"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Nationalpark"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Mogelbaum-Standort"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Safari-Zone"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Safari-Zonen-Tor"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Pokéathlon-Dom"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Mogelbaum-Route"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Mogelbaum"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Mogelbaum-Höhle"
+  },
+  {
+    "Region": "Johto",
+    "Ort": "Silberberg (Zugang von Kanto)"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Wurzelheim"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Blütenburg City"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Rosaltstadt"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Metarost City"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Faustauhaven"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Graphitport City"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Laubwechselfeld"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Malvenfroh City"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Blütenburgwald"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 101"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 102"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 103"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 104"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 105"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 106"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 107"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 108"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 109"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 110"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 111"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 112"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 113"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 114"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 115"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 116"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 117"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 118"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 119"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 120"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 121"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 122"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 123"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 124"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 125"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 126"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 127"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 128"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 129"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 130"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 131"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 132"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 133"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Route 134"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Blütenburgwald"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Metaflurtunnel"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Granithöhle"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Meteorfall"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Schlotberg"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Feuriger Pfad"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Wüstenruine"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Altering Cave"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Neue Mauville"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Pyroberg"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Himmelturm"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Seewoge Malvenfroh"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Tiefseehöhle"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Siegesstraße"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Pokémon-Liga"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Baumhausen City"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Seegrasulb City"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Xeneroville"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Flossbrunn"
+  },
+  {
+    "Region": "Hoenn",
+    "Ort": "Kampfzone (nur in Smaragd)"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Zweiblattdorf"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Sandgemme"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Jubelstadt"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Erzelingen"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Flori"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Ewigenau"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Herzhofen"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Trostu"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Schleiede"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Celestic"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Fleetburg"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Sonnewik"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Blizzach"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Pokémon-Liga"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 201"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 202"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 203"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 204"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 205"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 206"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 207"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 208"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 209"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 210"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 211"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 212"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 213"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 214"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 215"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 216"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 217"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 218"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 219"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 220"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 221"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 222"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 223"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 224"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 225"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 226"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 227"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 228"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 229"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Route 230"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "See der Wahrheit"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "See der Kühnheit"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "See der Stärke"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Seeufer der Wahrheit"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Seeufer der Kühnheit"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Seeufer der Stärke"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Kraterberg"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Ewigenwald"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Eiseninsel"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Zertrümmerpfad"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Erzelingen-Tor"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Windkraftwerk"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Radweg"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Trostlose Höhle"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Geisterturm"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Trostlose Ruinen"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Pokémon-Villa"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Pokémon-Herrenhaus"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Großer Sumpf"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Blizzach-Tempel"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Feuerofenwerke"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Vollmondinsel"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Neumondinsel"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Frühlingspfad"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Umkehrhöhle"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Speersäule"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Galaktik-Hauptquartier"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Kampfzone"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Kampfpark"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Überlebensareal"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Erholungsareal"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Kampfareal"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Trostufer"
+  },
+  {
+    "Region": "Sinnoh",
+    "Ort": "Blumenparadies"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Avenitia"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Eventura City"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Gavina"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Orion City"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Septerna City"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Stratos City"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Marea City"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Panaero City"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Twindrake City"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Tessera"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Ondula"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Dausing"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Nevaio City"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Pokémon-Liga"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 1"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 2"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 3"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 4"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 5"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 6"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 7"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 8"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 9"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 10"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 11"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 12"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 13"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 14"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 15"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 16"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 17"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 18"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 19"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 20"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 21"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 22"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Route 23"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Ewigenwald"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Traumbrache"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Wüstenresort"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Turm des Himmels"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Elektrolithhöhle"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Drachenstiege"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Riesengrotte"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Siegesstraße"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Panaero-Höhle"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Marea-Tunnel"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Stratos-Kanalisation"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Ferrula"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Pokémon World Tournament"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Metro Royale"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Schwarz City"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Weißer Wald"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Duellpassage"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Pokéwood"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Einklangspassage"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Naturschutzgebiet"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Abyssalruinen"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Wendelberg"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Reversal Mountain"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Riesengrotte"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Gedenkhügel"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Hain der Täuschung"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Panaero-Höhle"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Stratos-Kanalisation"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Pokémon-Fanclub"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Kampfmetro"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Kampfhaus"
+  },
+  {
+    "Region": "Einall",
+    "Ort": "Pokémon Musical"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Escissia"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Nouvaria"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Aquacorde"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Illumina City"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Nevaio City"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Tempera City"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Romantia City"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Yantara City"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Fluxia City"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Fractalia City"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Pokémon-Liga"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 1"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 2"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 3"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 4"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 5"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 6"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 7"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 8"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 9"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 10"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 11"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 12"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 13"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 14"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 15"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 16"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 17"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 18"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 19"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 20"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 21"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 22"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 23"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 24"
+  },
+  {
+    "Region": "Kalos",
+    "Ort": "Route 25"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Hauholi City"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Lili’i"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 1"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 2"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 3"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Tenkarat-Hügel"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Hauholi-Friedhof"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Professor Kukuis Labor"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Trainer-Schule"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Hauholi-Strand"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Hauholi-Friedhof"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Verdant Cavern"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 4"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 5"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Ohana-Farm"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Brooklet Hill"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 6"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 7"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Wela-Vulkanpark"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 8"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Fossilienlabor"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Schattendschungel"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 9"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Konikoni City"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Digda-Tunnel"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 10"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Hokulani-Berg"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 11"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 12"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 13"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Haina-Wüste"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 14"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 15"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Aether-Haus"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Ula-Ula-Blumenmeer"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Malihe City"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Malihe-Bibliothek"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 16"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 17"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Po’u"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Æther-Paradies"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 18"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 19"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 20"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Route 21"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Poni-Küste"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Poni-Wiesen"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Antike Poni-Küste"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Poni-Canyon"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Poni-Hain"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Poni-Insel"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Poni-Blumenmeer"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Poni-Gipfel"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Pokémon-Liga"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Ultradimension"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Festival-Plaza"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Kampfbaum"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Kampfagentur"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Pokémon-Resort"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Pokémon-Pension"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Royale-Dome"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "PokéMobil-Zentrale"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Pokémon-Fotoclub"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Ultrapforten"
+  },
+  {
+    "Region": "Alola",
+    "Ort": "Ultraforschungsteam-Stützpunkt"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Postwick"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Hop's Haus"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Wedgehurst"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Professor Magnolias Haus"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 1"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 2"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Professor Magnolias Labor"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Engine City (Brassbury)"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 3"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Galar-Mine"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 4"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Turffield"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 5"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Pokémon-Pension"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Hulbury"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Galar-Mine Nr. 2"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 6"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Stow-on-Side"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 7"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 8"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Circhester"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 9"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Spikemuth"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 10"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Wyndon"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Pokémon-Liga"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Slumbering Weald"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Glimwood Tangle"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Motostoke Outskirts"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 11 (nur intern)"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Route 12 (nur intern)"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: Rolling Fields"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: Dappled Grove"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: Watchtower Ruins"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: East Lake Axewell"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: West Lake Axewell"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: South Lake Miloch"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: North Lake Miloch"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: Giant's Seat"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: Stony Wilderness"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: Bridge Field"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: Dusty Bowl"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: Giant's Mirror"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: Giant's Cap"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Naturzone: Lake of Outrage"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Fields of Honor"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Soothing Wetlands"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Forest of Focus"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Challenge Beach"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Brawlers' Cave"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Loop Lagoon"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Stepping-Stone Sea"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Insular Sea"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Honeycalm Island"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Honeycalm Sea"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Potbottom Desert"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Warm-Up Tunnel"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Training Lowlands"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Challenge Road"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Courageous Cavern"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Isle of Armor: Workout Sea"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Slippery Slope"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Frostpoint Field"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Giant's Bed"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Old Cemetery"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Giant's Foot"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Ballimere Lake"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Dyna Tree Hill"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Frigid Sea"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Three-Point Pass"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Snowslide Slope"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Path to the Peak"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Crown Shrine"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Lakeside Cave"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Roaring-Sea Caves"
+  },
+  {
+    "Region": "Galar",
+    "Ort": "Crown Tundra: Tunnel to the Top"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Mesalona City"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Los Platos"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Cortondo"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Artazon"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Levincia"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Zapapico"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Cascarrafa"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Medali"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Montanata"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Frigomonta"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Pokémon-Liga"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 1"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 2"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 3"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 4"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 5"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 6"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 7"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 8"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 9"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 10"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 11"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 12"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 13"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 14"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 15"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 16"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 17"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 18"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 19"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 20"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 21"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 22"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 23"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 24"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 25"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 26"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 27"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 28"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 29"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 30"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 31"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 32"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 33"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 34"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 35"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 36"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 37"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 38"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 39"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 40"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 41"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 42"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 43"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 44"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 45"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 46"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 47"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 48"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 49"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Route 50"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Große Kluft"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Glaseado-Berg"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Südliche Zone (1–6)"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Westliche Zone (1–3)"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Östliche Zone (1–3)"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Nördliche Zone (1–3)"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Große Krater von Paldea"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Forschungsstation 1"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Forschungsstation 2"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Forschungsstation 3"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Forschungsstation 4"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Area Zero"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Akademie von Mesalona"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Kampfgericht"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Arenen (8 Stück)"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Team Star Basen"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Titanen-Verstecke"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "PokéPortal"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Terakristall-Höhlen"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Leuchttürme"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Aussichtstürme"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Schnellreisepunkte"
+  },
+  {
+    "Region": "Paldea",
+    "Ort": "Picknickplätze"
+  }
+]
