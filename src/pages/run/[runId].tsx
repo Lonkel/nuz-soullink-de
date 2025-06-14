@@ -2,7 +2,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { RunContext, Encounter } from '@/context/RunContext'
-import Layout from './_layout'             // siehe gleich
+import Layout from '../../components/run/_layout'             // siehe gleich
 
 export default function RunPage() {
   const { query } = useRouter()
