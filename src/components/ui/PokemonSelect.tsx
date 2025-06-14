@@ -1,15 +1,11 @@
-// ──────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
 // src/components/ui/PokemonSelect.tsx
-// Verwendet deine echte `pokemon.json`. Keine Fallback-Liste, kein
-// automatisches Öffnen aller Dropdowns. Props:
-//
-//   • onSelect (Pflicht) – wird mit deutschem Namen aufgerufen
-//   • onCancel (optional) – schließt das Pop-over ohne Auswahl
-// ──────────────────────────────────────────────────────────────
+// endgültig ESLint-sauber (keine unused-vars, kein any)
+// ─────────────────────────────────────────────
 import { useEffect, useRef, useState } from 'react'
-import pokedex from '@/data/pokemon.json' // ← Pfad ggf. anpassen
+import pokedex from '@/data/pokemon.json'
 
-/* ------- Typ für einen Eintrag deiner JSON (falls nötig) ------- */
+/* 1 ▸ Interface passt zu deiner JSON */
 interface DexEntry {
   id: number
   de: string
@@ -17,8 +13,9 @@ interface DexEntry {
   types: string[]
 }
 
-/* ------- Statisches Namens-Array aus der JSON bauen ----------- */
-const NAMES: string[] = (pokedex as any[]).map((p) => p.de)
+/* 2 ▸ getypte Konstante statt "as any" */
+const POKEDEX: ReadonlyArray<DexEntry> = pokedex as DexEntry[]
+const NAMES = POKEDEX.map((p) => p.de) // deutsches Feld "de"
 
 export interface PokemonSelectProps {
   onSelect: (germanName: string) => void
@@ -29,13 +26,12 @@ export default function PokemonSelect({ onSelect, onCancel }: PokemonSelectProps
   const [query, setQuery] = useState('')
   const boxRef = useRef<HTMLDivElement>(null)
 
-  /* Outside-Click → Popover schließen */
+  /* Outside-Click → Cancel */
   useEffect(() => {
-    const handle = (e: MouseEvent) =>
+    const h = (e: MouseEvent) =>
       !boxRef.current?.contains(e.target as Node) && onCancel?.()
-
-    document.addEventListener('mousedown', handle)
-    return () => document.removeEventListener('mousedown', handle)
+    document.addEventListener('mousedown', h)
+    return () => document.removeEventListener('mousedown', h)
   }, [onCancel])
 
   const filtered = NAMES.filter((n) =>
@@ -48,7 +44,7 @@ export default function PokemonSelect({ onSelect, onCancel }: PokemonSelectProps
       className="absolute z-50 w-56 max-h-80 overflow-auto rounded
                  bg-gray-800 p-3 text-white shadow-lg"
     >
-      {/* Suchfeld + Cancel-Button */}
+      {/* Suchfeld + Cancel */}
       <div className="mb-2 flex gap-2">
         <input
           autoFocus
@@ -68,7 +64,6 @@ export default function PokemonSelect({ onSelect, onCancel }: PokemonSelectProps
         )}
       </div>
 
-      {/* Trefferliste */}
       {filtered.length === 0 ? (
         <p className="text-sm text-gray-400">Kein Treffer</p>
       ) : (
