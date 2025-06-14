@@ -1,40 +1,52 @@
+// src/components/encounters/EncountersTab.tsx
 import { useRun, Status } from '@/context/RunContext'
 import LocationSelect from '@/components/ui/LocationSelect'
 import PokemonSelect  from '@/components/ui/PokemonSelect'
 import { sprite } from '@/utils/sprites'
 import { v4 as uuid } from 'uuid'
-import type { Encounter } from '@/context/RunContext'   // oder eigenen Typ
+import { MinusCircle } from 'lucide-react'          // ➊ Icon
+import { Encounter } from '@/context/RunContext'
 
-const statusClasses = { Team:'bg-green-600', Box:'bg-yellow-500', Tod:'bg-red-600' }
+const statusClasses = { Team: 'bg-green-600', Box: 'bg-yellow-500', Tod: 'bg-red-600' }
 
 export default function EncountersTab() {
   const { trainers, encounters, setEncounters } = useRun()
 
+  /* ---------- neue Reihe ---------- */
   const addEncounter = () =>
-   setEncounters((e) => [
-     ...e,
-     {
-       id: uuid(),
-       location: '',
-       slots: trainers.map((t) => ({ trainer: t, name: '' })),
-       status: 'Box' as const
-     } satisfies Encounter
-   ])
+    setEncounters(e => [
+      ...e,
+      {
+        id: uuid(),
+        location: '',
+        slots: trainers.map(t => ({ trainer: t, name: '' })),
+        status: 'Box' as const
+      }
+    ])
 
+  /* ---------- EINZELNE Reihe patchen ---------- */
   const patch = (id: string, fn: (e: Encounter) => Encounter) =>
-    setEncounters(prev => prev.map(e => e.id===id ? fn(e) : e))
+    setEncounters(prev => prev.map(e => (e.id === id ? fn(e) : e)))
 
+  /* ---------- Reihe löschen ---------- */
+  const remove = (id: string) =>
+    setEncounters(prev => prev.filter(e => e.id !== id))
+
+  /* ────────────────────────── JSX ────────────────────────── */
   return (
     <>
-      
-      <table className="w-full text-sm">
+      <table className="w-full text-sm table-fixed">
         <thead>
           <tr className="bg-gray-700 text-white">
             <th className="p-2">Herkunft</th>
-            {trainers.map(t => <th key={t} className="p-2">{t}</th>)}
-            <th className="p-2">Status</th>
+            {trainers.map(t => (
+              <th key={t} className="p-2">{t}</th>
+            ))}
+            <th className="p-2 w-32">Status</th>
+            <th className="p-2 w-12" />            {/* ➋ leere Kopfzelle für Löschen */}
           </tr>
         </thead>
+
         <tbody>
           {encounters.map(enc => (
             <tr key={enc.id} className="border-t h-24">
@@ -42,7 +54,7 @@ export default function EncountersTab() {
               <td className="relative p-2">
                 <LocationSelect
                   value={enc.location}
-                  onChange={loc => patch(enc.id, e=>({ ...e, location: loc }))}
+                  onChange={loc => patch(enc.id, e => ({ ...e, location: loc }))}
                 />
               </td>
 
@@ -51,15 +63,16 @@ export default function EncountersTab() {
                 <td key={idx} className="relative p-2">
                   {!slot.name && enc.location && (
                     <PokemonSelect onSelect={poke =>
-                      patch(enc.id, e=>{
-                        const s=[...e.slots]; s[idx]={...slot,name:poke}
-                        return {...e, slots:s}
+                      patch(enc.id, e => {
+                        const s = [...e.slots]
+                        s[idx] = { ...slot, name: poke }
+                        return { ...e, slots: s }
                       })}
                     />
                   )}
+
                   {slot.name && (
-                    <img src={sprite(slot.name)} alt={slot.name}
-                         className="h-12 mx-auto" />
+                    <img src={sprite(slot.name)} alt={slot.name} className="h-12 mx-auto" />
                   )}
                 </td>
               ))}
@@ -69,7 +82,7 @@ export default function EncountersTab() {
                 <select
                   value={enc.status}
                   onChange={e =>
-                    patch(enc.id, old=>({ ...old, status:e.target.value as Status }))
+                    patch(enc.id, old => ({ ...old, status: e.target.value as Status }))
                   }
                   className={`w-full text-white rounded ${statusClasses[enc.status]}`}
                 >
@@ -78,16 +91,29 @@ export default function EncountersTab() {
                   <option value="Tod">Tod</option>
                 </select>
               </td>
+
+              {/* Löschen-Button */}
+              <td className="p-2 w-12 text-center">
+                <button
+                  onClick={() => remove(enc.id)}
+                  className="text-red-500 hover:text-red-700"
+                  aria-label="Eintrag löschen"
+                >
+                  <MinusCircle size={20} fill="white" className="stroke-red-600" />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {/* + Reihe */}
       <div className="mt-3 text-right">
         <button
           onClick={addEncounter}
           className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
         >
-          + 
+          + Reihe
         </button>
       </div>
     </>
