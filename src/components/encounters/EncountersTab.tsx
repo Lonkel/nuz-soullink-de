@@ -1,23 +1,31 @@
 // src/components/encounters/EncountersTab.tsx
-import { useRun, Status } from '@/context/RunContext'
-import LocationSelect from '@/components/ui/LocationSelect'
-import PokemonSelect  from '@/components/ui/PokemonSelect'
-import { sprite } from '@/utils/sprites'
-import { v4 as uuid } from 'uuid'
-import { MinusCircle } from 'lucide-react'          // ➊ Icon
-import { Encounter } from '@/context/RunContext'
 import { useState } from 'react'
-import { Pencil } from 'lucide-react'   // optionales Stift-Icon
+import { MinusCircle, Pencil } from 'lucide-react'
+import { v4 as uuid } from 'uuid'
 
-const statusClasses = { Team: 'bg-green-600', Box: 'bg-yellow-500', Tod: 'bg-red-600' }
+import { useRun, Status }     from '@/context/RunContext'
+import type { Encounter }     from '@/context/RunContext'
+import LocationSelect         from '@/components/ui/LocationSelect'
+import PokemonSelect          from '@/components/ui/PokemonSelect'
+import { sprite }             from '@/utils/sprites'
+
+const statusClasses = {
+  Team: 'bg-green-600',
+  Box:  'bg-yellow-500',
+  Tod:  'bg-red-600',
+} as const
 
 export default function EncountersTab() {
   const { trainers, encounters, setEncounters } = useRun()
 
-   // ↓ Merkt sich, welche Slot-Zelle gerade im "Edit-Modus" ist
+  /* ───────────────────────── Local State ───────────────────────── */
+  // merkt die Zelle, die gerade editiert wird
   const [editing, setEditing] = useState<{ id: string; idx: number } | null>(null)
 
-  /* ---------- neue Reihe ---------- */
+  /* ───────────────────────── State-Helper ───────────────────────── */
+  const patch = (id: string, fn: (e: Encounter) => Encounter) =>
+    setEncounters(prev => prev.map(e => (e.id === id ? fn(e) : e)))
+
   const addEncounter = () =>
     setEncounters(e => [
       ...e,
@@ -25,21 +33,17 @@ export default function EncountersTab() {
         id: uuid(),
         location: '',
         slots: trainers.map(t => ({ trainer: t, name: '' })),
-        status: 'Box' as const
-      }
+        status: 'Box' as const,
+      } satisfies Encounter,
     ])
 
-  /* ---------- EINZELNE Reihe patchen ---------- */
-  const patch = (id: string, fn: (e: Encounter) => Encounter) =>
-    setEncounters(prev => prev.map(e => (e.id === id ? fn(e) : e)))
-
-  /* ---------- Reihe löschen ---------- */
-  const remove = (id: string) =>
+  const removeEncounter = (id: string) =>
     setEncounters(prev => prev.filter(e => e.id !== id))
 
-  /* ────────────────────────── JSX ────────────────────────── */
+  /* ──────────────────────────── JSX ──────────────────────────── */
   return (
     <>
+      {/* ───────────── Tabelle ───────────── */}
       <table className="w-full text-sm table-fixed">
         <thead>
           <tr className="bg-gray-700 text-white">
@@ -48,7 +52,7 @@ export default function EncountersTab() {
               <th key={t} className="p-2">{t}</th>
             ))}
             <th className="p-2 w-32">Status</th>
-            <th className="p-2 w-12" />            {/* ➋ leere Kopfzelle für Löschen */}
+            <th className="p-2 w-12" />  {/* Leere Kopfzelle fürs Löschen-Icon */}
           </tr>
         </thead>
 
@@ -63,24 +67,52 @@ export default function EncountersTab() {
                 />
               </td>
 
-              {/* Pokémon pro Trainer */}
-              {enc.slots.map((slot, idx) => (
-                <td key={idx} className="relative p-2">
-                  {!slot.name && enc.location && (
-                    <PokemonSelect onSelect={poke =>
-                      patch(enc.id, e => {
-                        const s = [...e.slots]
-                        s[idx] = { ...slot, name: poke }
-                        return { ...e, slots: s }
-                      })}
-                    />
-                  )}
+              {/* Pokémon-Slots */}
+              {enc.slots.map((slot, idx) => {
+                const isEditing = editing?.id === enc.id && editing.idx === idx
+                const needsSelect = !slot.name || isEditing
 
-                  {slot.name && (
-                    <img src={sprite(slot.name)} alt={slot.name} className="h-12 mx-auto" />
-                  )}
-                </td>
-              ))}
+                return (
+                  <td key={idx} className="relative p-2">
+                    {/* Auswahl-Komponente */}
+                    {needsSelect && enc.location && (
+                      <PokemonSelect
+                        onSelect={poke => {
+                          patch(enc.id, e => {
+                            const s = [...e.slots]
+                            s[idx] = { ...slot, name: poke }
+                            return { ...e, slots: s }
+                          })
+                          setEditing(null)
+                        }}
+                        onCancel={() => setEditing(null)}
+                      />
+                    )}
+
+                    {/* Sprite + Edit-Overlay */}
+                    {slot.name && !isEditing && (
+                      <button
+                        onClick={() => setEditing({ id: enc.id, idx })}
+                        className="group mx-auto relative h-12"
+                        aria-label="Pokémon bearbeiten"
+                      >
+                        <img
+                          src={sprite(slot.name)}
+                          alt={slot.name}
+                          className="h-12 mx-auto"
+                        />
+                        <Pencil
+                          size={18}
+                          fill="white"
+                          className="absolute right-0 bottom-0 stroke-red-600
+                                     rounded-full bg-black/60 p-[2px]
+                                     opacity-0 group-hover:opacity-100 transition"
+                        />
+                      </button>
+                    )}
+                  </td>
+                )
+              })}
 
               {/* Status */}
               <td className="p-2 w-32">
@@ -97,11 +129,11 @@ export default function EncountersTab() {
                 </select>
               </td>
 
-              {/* Löschen-Button */}
+              {/* Löschen */}
               <td className="p-2 w-12 text-center">
                 <button
-                  onClick={() => remove(enc.id)}
-                  className="text-red-500 hover:text-red-700"
+                  onClick={() => removeEncounter(enc.id)}
+                  className="text-red-600 hover:text-red-800"
                   aria-label="Eintrag löschen"
                 >
                   <MinusCircle size={20} fill="white" className="stroke-red-600" />
@@ -112,7 +144,7 @@ export default function EncountersTab() {
         </tbody>
       </table>
 
-      {/* + Reihe */}
+      {/* ───────────── +Reihe-Button ───────────── */}
       <div className="mt-3 text-right">
         <button
           onClick={addEncounter}
