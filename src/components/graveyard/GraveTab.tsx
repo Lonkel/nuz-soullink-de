@@ -71,7 +71,7 @@ export default function GraveTab() {
               return (
                 <>
                   {/* Pokémon-Slot */}
-                  <td key={`slot-${idx}`} className="relative p-2 align-top">
+                  <td key={`slot-${idx}`} className="relative p-2 align-top text-center">
                     {isEditing && (
                       <PokemonSelect
                         onSelect={poke => {

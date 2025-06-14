@@ -9,7 +9,7 @@ export default function TypeIcon({ type }: { type: string }) {
       src={url(type)}
       alt={type}
       title={type}
-      className="h-8 w-8 mx-auto"   /* etwas größer, gut erkennbar */
+      className="h-8 w-18 mx-auto"   /* etwas größer, gut erkennbar */
       loading="lazy"
     />
   )

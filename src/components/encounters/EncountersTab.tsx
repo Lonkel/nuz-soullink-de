@@ -76,7 +76,7 @@ export default function EncountersTab() {
                 return (
                   <>
                     {/* eigentlicher Slot */}
-                    <td key={`slot-${idx}`} className="relative p-2 align-top">
+                    <td key={`slot-${idx}`} className="relative p-2 align-top text-center">
                       {isEditing && (
                         <PokemonSelect
                           onSelect={(poke) => {
