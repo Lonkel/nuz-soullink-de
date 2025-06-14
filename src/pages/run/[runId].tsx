@@ -2,7 +2,8 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { RunContext, Encounter } from '@/context/RunContext'
-import Layout from '../../components/run/_layout'             // siehe gleich
+import Layout from '../../components/run/_layout'
+import { RunProvider } from '@/context/RunContext'
 
 export default function RunPage() {
   const { query } = useRouter()
@@ -37,8 +38,11 @@ export default function RunPage() {
   if (!id || !game) return null   // optional Loader
 
   return (
-    <RunContext.Provider value={{ game, trainers, encounters, setEncounters }}>
+    <RunProvider
+      initialGame="HG/SS"
+      initialTrainers={['Red', 'Blue']}
+    >
       <Layout />
-    </RunContext.Provider>
+    </RunProvider>
   )
 }
