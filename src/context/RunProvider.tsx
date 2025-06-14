@@ -1,7 +1,6 @@
 // context/RunProvider.tsx
 import { RunContext } from './RunContext'
 import { useState, PropsWithChildren } from 'react'
-import { v4 as uuid } from 'uuid'
 import type { Encounter } from '@/context/RunContext' 
 
 export const RunProvider = ({

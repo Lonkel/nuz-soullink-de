@@ -1,6 +1,5 @@
 // src/context/RunContext.tsx
-import { createContext, useContext } from 'react'
-import type { ReactNode } from 'react'
+import { createContext, useContext, ReactNode } from 'react'
 
 export type Status = 'Team' | 'Box' | 'Tod'
 
@@ -26,3 +25,7 @@ type RunState = {
 
 export const RunContext = createContext<RunState | null>(null)
 export const useRun = () => useContext(RunContext)!
+
+export function RunProvider({ children, value }: { children: ReactNode; value: RunState }) {
+  return <RunContext.Provider value={value}>{children}</RunContext.Provider>
+}
