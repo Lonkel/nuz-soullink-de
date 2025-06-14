@@ -37,7 +37,7 @@ export default function BoxTab() {
           {trainers.map(t => (
             <>
               <th key={t} className="p-2">{t}</th>
-              <th key={`${t}-typ`} className="p-2 w-24">Typ</th>
+              <th key={`${t}-typ`} className="p-2 w-24" />   {/* leer */}
             </>
           ))}
           <th className="p-2 w-32">Status</th>
@@ -46,9 +46,9 @@ export default function BoxTab() {
 
       <tbody>
         {rows.map(enc => (
-          <tr key={enc.id} className="border-t h-28 align-top">
+          <tr key={enc.id} className="border-t h-32 align-middle">
             {/* Herkunft */}
-            <td className="p-2">
+            <td className="p-2 align-middle">
               <LocationSelect
                 value={enc.location}
                 onChange={loc =>

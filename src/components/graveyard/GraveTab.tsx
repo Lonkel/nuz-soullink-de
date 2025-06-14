@@ -40,7 +40,7 @@ export default function GraveTab() {
           {trainers.map(t => (
             <>
               <th key={t} className="p-2">{t}</th>
-              <th key={`${t}-typ`} className="p-2 w-20">Typ</th>
+              <th key={`${t}-typ`} className="p-2 w-20" />   {/* leer */}
             </>
           ))}
 
@@ -51,9 +51,9 @@ export default function GraveTab() {
 
       <tbody>
         {rows.map(enc => (
-          <tr key={enc.id} className="border-t h-24 align-top">
+          <tr key={enc.id} className="border-t h-32 align-middle">
             {/* Herkunft */}
-            <td className="p-2">
+            <td className="p-2 align-middle">
               <LocationSelect
                 value={enc.location}
                 onChange={loc =>
