@@ -55,9 +55,9 @@ export default function StartPage() {
         </select>
       </section>
 
-      {/* Trainer:innen */}
+      {/* Trainer */}
       <section className="space-y-3">
-        <div className="font-semibold">Trainer:innen</div>
+        <div className="font-semibold">Trainer</div>
 
         {trainers.map((name, idx) => (
           <div key={idx} className="flex gap-2">
