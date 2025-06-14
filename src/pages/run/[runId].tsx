@@ -16,7 +16,11 @@ export default function RunPage() {
   const trainerList = trainers.split('|').filter(Boolean)
 
   return (
-    <RunProvider initialGame={game} initialTrainers={trainerList}>
+    <RunProvider
+   runId={String(router.query.runId)}
+   initialGame={game}
+   initialTrainers={trainerList}
+ >
       <Layout />
     </RunProvider>
   )

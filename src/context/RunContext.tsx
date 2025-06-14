@@ -6,6 +6,7 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react'
+ import usePersistentState from '@/hooks/usePersistentState'
 
 export type Status = 'Team' | 'Box' | 'Tod'
 
@@ -43,17 +44,25 @@ export const useRun = (): RunState => {
 
 interface RunProviderProps {
   children: ReactNode
+  runId: string
   initialGame: string
   initialTrainers: string[]
 }
 
 export function RunProvider({
   children,
+  runId,
   initialGame,
   initialTrainers,
 }: RunProviderProps) {
-  const [encounters, setEncounters] = useState<Encounter[]>([])
-  const [team, setTeam] = useState<Encounter[]>([])
+  const [encounters, setEncounters] = usePersistentState<Encounter[]>(
+    `${runId}-encounters`,
+    [],
+  )
+  const [team, setTeam] = usePersistentState<Encounter[]>(
+    `${runId}-team`,
+    [],
+  )
 
   const value: RunState = {
     game: initialGame,
