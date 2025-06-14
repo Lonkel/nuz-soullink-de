@@ -1,5 +1,7 @@
 const url = (type: string) =>
-  `https://media.bisafans.de/3569bf2/typen/${encodeURIComponent(type)}.png`
+  `https://media.bisafans.de/3569bf2/typen/${encodeURIComponent(
+    type.toLowerCase(),
+  )}.png`
 
 export default function TypeIcon({ type }: { type: string }) {
   return (
@@ -7,8 +9,8 @@ export default function TypeIcon({ type }: { type: string }) {
       src={url(type)}
       alt={type}
       title={type}
-      className="h-6 w-6 mx-auto"
-
+      className="h-8 w-8 mx-auto"   /* etwas größer, gut erkennbar */
+      loading="lazy"
     />
   )
 }

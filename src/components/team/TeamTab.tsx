@@ -97,7 +97,7 @@ export default function TeamTab() {
                 return (
                   <>
                     {/* Pokémon-Slot */}
-                    <td key={`slot-${idx}`} className="relative p-2">
+                    <td key={`slot-${idx}`} className="relative p-2 align-top">
                       {isEditing && (
                         <PokemonSelect
                           onSelect={poke => {
