@@ -5,17 +5,34 @@ import { useRun }    from '@/context/RunContext'
 
 const tabs = ['Begegnungen', 'Team', 'Box', 'Friedhof'] as const
 
+/* 1️⃣  Map Kürzel → Klartext */
+const GAME_NAME: Record<string, string> = {
+  RB:     'Rot / Blau',
+  G:      'Gelb',
+  GSK:    'Gold / Silber / Kristall',
+  HGSS:   'HeartGold / SoulSilver',
+  RSE:    'Rubin / Saphir / Smaragd',
+  ORAS:   'Omega Rubin / Alpha Saphir',
+  DPPT:   'Diamant / Perl / Platin',
+  BDSP:   'Brillant-Diamant / Leucht-Perl',
+  XY:     'X / Y',
+  SMUSUM: 'Sonne / Mond / Ultra',
+}
+
 export default function Layout() {
   const { game } = useRun()
+
+  /* 2️⃣  Fallback: unbekanntes Kürzel bleibt wie es ist */
+  const fullTitle = GAME_NAME[game] ?? game ?? '?'
 
   return (
     <main className="max-w-5xl mx-auto p-6">
       <h1 className="mb-6 text-2xl font-bold text-white">
-        Soullink&nbsp;–&nbsp;Pokémon&nbsp;{game || '?'}
+        Soullink&nbsp;–&nbsp;Pokémon&nbsp;{fullTitle}
       </h1>
 
+      {/* Tabs */}
       <Tab.Group>
-        {/* Tab-Leiste */}
         <Tab.List className="flex gap-2 border-b pb-2">
           {tabs.map(t => (
             <Tab
@@ -34,7 +51,6 @@ export default function Layout() {
           ))}
         </Tab.List>
 
-        {/* Panels */}
         <Tab.Panels className="pt-4">
           <Tab.Panel><EncountersTab /></Tab.Panel>
           <Tab.Panel><FilteredTab wanted="Team" /></Tab.Panel>
