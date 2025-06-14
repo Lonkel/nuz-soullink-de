@@ -5,7 +5,7 @@ import { Tab } from '@headlessui/react'
 
 import EncountersTab from '@/components/encounters/EncountersTab'
 import TeamTab       from '@/components/team/TeamTab'
-//import BoxTab        from '@/components/box/BoxTab'
+import BoxTab        from '@/components/box/BoxTab'
 import GraveTab      from '@/components/graveyard/GraveTab'
 
 import { useRun }    from '@/context/RunContext'
@@ -61,6 +61,9 @@ export default function Layout() {
           </Tab.Panel>
           <Tab.Panel>
             <TeamTab />
+          </Tab.Panel>
+          <Tab.Panel>
+            <BoxTab />
           </Tab.Panel>
           <Tab.Panel>
             <GraveTab />
