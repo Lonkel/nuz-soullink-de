@@ -1,7 +1,7 @@
 // src/pages/run/_layout.tsx
 import { Tab } from '@headlessui/react'
 import EncountersTab from '@/components/encounters/EncountersTab'
-import FilteredTab   from '@/components/team/FilteredTab'
+import FilteredTab   from '@/components/team/TeamTab'
 
 const tabs = ['Begegnungen', 'Team', 'Box', 'Friedhof'] as const
 
