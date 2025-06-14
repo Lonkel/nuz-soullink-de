@@ -6,11 +6,16 @@ import { sprite } from '@/utils/sprites'
 import { v4 as uuid } from 'uuid'
 import { MinusCircle } from 'lucide-react'          // ➊ Icon
 import { Encounter } from '@/context/RunContext'
+import { useState } from 'react'
+import { Pencil } from 'lucide-react'   // optionales Stift-Icon
 
 const statusClasses = { Team: 'bg-green-600', Box: 'bg-yellow-500', Tod: 'bg-red-600' }
 
 export default function EncountersTab() {
   const { trainers, encounters, setEncounters } = useRun()
+
+   // ↓ Merkt sich, welche Slot-Zelle gerade im "Edit-Modus" ist
+  const [editing, setEditing] = useState<{ id: string; idx: number } | null>(null)
 
   /* ---------- neue Reihe ---------- */
   const addEncounter = () =>
