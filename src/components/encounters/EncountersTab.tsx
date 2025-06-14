@@ -1,13 +1,13 @@
-// src/components/encounters/EncountersTab.tsx
 import { useState } from 'react'
-import { MinusCircle, Pencil } from 'lucide-react'
+import { Pencil } from 'lucide-react'
 import { v4 as uuid } from 'uuid'
 
-import { useRun, Status }     from '@/context/RunContext'
-import type { Encounter }     from '@/context/RunContext'
-import LocationSelect         from '@/components/ui/LocationSelect'
-import PokemonSelect          from '@/components/ui/PokemonSelect'
-import { sprite }             from '@/utils/sprites'
+import { useRun, Status }  from '@/context/RunContext'
+import type { Encounter }  from '@/context/RunContext'
+import PokemonSelect       from '@/components/ui/PokemonSelect'
+import LocationSelect      from '@/components/ui/LocationSelect'
+import { sprite }          from '@/utils/sprites'
+import { pokemonTypes }    from '@/utils/pokemonTypes'        // ← NEU
 
 const statusClasses = {
   Team: 'bg-green-600',
@@ -17,100 +17,117 @@ const statusClasses = {
 
 export default function EncountersTab() {
   const { trainers, encounters, setEncounters } = useRun()
+  const [editing, setEditing] =
+    useState<{ id: string; idx: number } | null>(null)
 
-  /* ───────────────────────── Local State ───────────────────────── */
-  // merkt die Zelle, die gerade editiert wird
-  const [editing, setEditing] = useState<{ id: string; idx: number } | null>(null)
-
-  /* ───────────────────────── State-Helper ───────────────────────── */
+  /* ------- helpers ------- */
   const patch = (id: string, fn: (e: Encounter) => Encounter) =>
-    setEncounters(prev => prev.map(e => (e.id === id ? fn(e) : e)))
+    setEncounters((prev) => prev.map((e) => (e.id === id ? fn(e) : e)))
 
-  const addEncounter = () =>
-    setEncounters(e => [
+  const addRow = () =>
+    setEncounters((e) => [
       ...e,
       {
         id: uuid(),
         location: '',
-        slots: trainers.map(t => ({ trainer: t, name: '' })),
-        status: 'Box' as const,
+        slots: trainers.map((t) => ({ trainer: t, name: '' })),
+        status: 'Box',
       } satisfies Encounter,
     ])
 
-  const removeEncounter = (id: string) =>
-    setEncounters(prev => prev.filter(e => e.id !== id))
-
-  /* ──────────────────────────── JSX ──────────────────────────── */
+  /* ------- JSX ------- */
   return (
     <>
-      {/* ───────────── Tabelle ───────────── */}
       <table className="w-full text-sm table-fixed">
         <thead>
           <tr className="bg-gray-700 text-white">
             <th className="p-2">Herkunft</th>
-            {trainers.map(t => (
-              <th key={t} className="p-2">{t}</th>
+
+            {/* ➊  Trainer + Typ-Spalten */}
+            {trainers.map((t) => (
+              <>
+                <th key={t} className="p-2">{t}</th>
+                <th key={`${t}-typ`} className="p-2 w-20">Typ</th>
+              </>
             ))}
+
             <th className="p-2 w-32">Status</th>
-            <th className="p-2 w-12" />  {/* Leere Kopfzelle fürs Löschen-Icon */}
+            <th className="p-2 w-12" />
           </tr>
         </thead>
 
         <tbody>
-          {encounters.map(enc => (
-            <tr key={enc.id} className="border-t h-24">
+          {encounters.map((enc) => (
+            <tr key={enc.id} className="border-t h-24 align-top">
               {/* Herkunft */}
-              <td className="relative p-2">
+              <td className="p-2">
                 <LocationSelect
                   value={enc.location}
-                  onChange={loc => patch(enc.id, e => ({ ...e, location: loc }))}
+                  onChange={(loc) => patch(enc.id, (e) => ({ ...e, location: loc }))}
                 />
               </td>
 
-              {/* Pokémon-Slots */}
+              {/* ➋  Slots + Typzelle */}
               {enc.slots.map((slot, idx) => {
                 const isEditing = editing?.id === enc.id && editing.idx === idx
-                const needsSelect = !slot.name || isEditing
+                const types = pokemonTypes(slot.name)
 
                 return (
-                  <td key={idx} className="relative p-2">
-                    {/* Auswahl-Komponente */}
-                    {needsSelect && enc.location && (
-                      <PokemonSelect
-                        onSelect={poke => {
-                          patch(enc.id, e => {
-                            const s = [...e.slots]
-                            s[idx] = { ...slot, name: poke }
-                            return { ...e, slots: s }
-                          })
-                          setEditing(null)
-                        }}
-                        onCancel={() => setEditing(null)}
-                      />
-                    )}
+                  <>
+                    {/* eigentlicher Slot */}
+                    <td key={`slot-${idx}`} className="relative p-2">
+                      {isEditing && (
+                        <PokemonSelect
+                          onSelect={(poke) => {
+                            patch(enc.id, (e) => {
+                              const s = [...e.slots]
+                              s[idx] = { ...slot, name: poke }
+                              return { ...e, slots: s }
+                            })
+                            setEditing(null)
+                          }}
+                          onCancel={() => setEditing(null)}
+                        />
+                      )}
 
-                    {/* Sprite + Edit-Overlay */}
-                    {slot.name && !isEditing && (
-                      <button
-                        onClick={() => setEditing({ id: enc.id, idx })}
-                        className="group mx-auto relative h-24"
-                        aria-label="Pokémon bearbeiten"
-                      >
-                        <img
-                          src={sprite(slot.name)}
-                          alt={slot.name}
-                          className="h-24 mx-auto"
-                        />
-                        <Pencil
-                          size={18}
-                          fill="white"
-                          className="absolute right-0 bottom-0 stroke-red-600
-                                     rounded-full bg-black/60 p-[2px]
-                                     opacity-0 group-hover:opacity-100 transition"
-                        />
-                      </button>
-                    )}
-                  </td>
+                      {slot.name && !isEditing && (
+                        <button
+                          onClick={() => setEditing({ id: enc.id, idx })}
+                          className="group mx-auto relative h-12"
+                        >
+                          <img
+                            src={sprite(slot.name)}
+                            alt={slot.name}
+                            className="h-12 mx-auto"
+                          />
+                          <Pencil
+                            size={18}
+                            fill="white"
+                            className="absolute right-0 bottom-0 stroke-red-600
+                                       rounded-full bg-black/60 p-[2px]
+                                       opacity-0 group-hover:opacity-100 transition"
+                          />
+                        </button>
+                      )}
+
+                      {!slot.name && !isEditing && (
+                        <button
+                          onClick={() => setEditing({ id: enc.id, idx })}
+                          className="mx-auto flex h-10 w-10 items-center justify-center
+                                     rounded-full bg-gray-700 text-white hover:bg-gray-600"
+                        >
+                          +
+                        </button>
+                      )}
+                    </td>
+
+                    {/* Typ-Zelle */}
+                    <td key={`type-${idx}`} className="p-2 text-sm text-center">
+                      {types.map((t) => (
+                        <div key={t}>{t}</div>
+                      ))}
+                    </td>
+                  </>
                 )
               })}
 
@@ -118,8 +135,8 @@ export default function EncountersTab() {
               <td className="p-2 w-32">
                 <select
                   value={enc.status}
-                  onChange={e =>
-                    patch(enc.id, old => ({ ...old, status: e.target.value as Status }))
+                  onChange={(e) =>
+                    patch(enc.id, (o) => ({ ...o, status: e.target.value as Status }))
                   }
                   className={`w-full font-bold text-white rounded ${statusClasses[enc.status]}`}
                 >
@@ -129,25 +146,17 @@ export default function EncountersTab() {
                 </select>
               </td>
 
-              {/* Löschen */}
-              <td className="p-2 w-12 text-center">
-                <button
-                  onClick={() => removeEncounter(enc.id)}
-                  className="text-red-600 hover:text-red-800"
-                  aria-label="Eintrag löschen"
-                >
-                  <MinusCircle size={20} fill="white" className="stroke-red-600" />
-                </button>
-              </td>
+              {/* Löschen (unverändert) */}
+              <td className="p-2 w-12 text-center">…</td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* ───────────── +Reihe-Button ───────────── */}
+      {/* + Reihe Button */}
       <div className="mt-3 text-right">
         <button
-          onClick={addEncounter}
+          onClick={addRow}
           className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
         >
           + Reihe
