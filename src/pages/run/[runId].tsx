@@ -1,7 +1,7 @@
 // src/pages/run/[runId].tsx
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { RunContext, Encounter } from '@/context/RunContext'
+import { Encounter } from '@/context/RunContext'
 import Layout from '../../components/run/_layout'
 import { RunProvider } from '@/context/RunContext'
 
