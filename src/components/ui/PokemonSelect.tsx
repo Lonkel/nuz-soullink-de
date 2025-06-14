@@ -1,61 +1,46 @@
 import { useEffect, useRef, useState } from 'react'
-import { Combobox } from '@headlessui/react'
-import pokedex from '@/data/pokemon.json'  // <— JSON enthält de / en
-import { sprite } from '@/utils/sprites'
-import type { DexEntry } from '@/types/pokemon'
 
 export interface PokemonSelectProps {
   onSelect: (germanName: string) => void
-  onCancel?: () => void          // ← optionaler Callback
+  onCancel?: () => void
   names?: string[]
 }
 
-
-const defaultNames = [
-  'Bisasam',
-  'Bisaknosp',
-  'Bisaflor',
-  'Glumanda',
-  'Glutexo',
-  'Glurak',
-  'Schiggy',
-  'Schillok',
-  'Turtok',
+const fallback = [
+  'Bisasam', 'Bisaknosp', 'Bisaflor',
+  'Glumanda', 'Glutexo', 'Glurak',
+  'Schiggy', 'Schillok', 'Turtok'
 ]
 
 export default function PokemonSelect({
   onSelect,
   onCancel,
-  names = defaultNames,
+  names = fallback
 }: PokemonSelectProps) {
-  const [query, setQuery] = useState('')
-  const wrapperRef = useRef<HTMLDivElement>(null)
+  const [q, setQ] = useState('')
+  const box = useRef<HTMLDivElement>(null)
 
-  /* ─ Click-Outside → Cancel ─ */
+  /* Outside-click => cancel */
   useEffect(() => {
-    const handle = (e: MouseEvent) => {
-      if (!wrapperRef.current?.contains(e.target as Node)) onCancel?.()
-    }
-    document.addEventListener('mousedown', handle)
-    return () => document.removeEventListener('mousedown', handle)
+    const h = (e: MouseEvent) =>
+      !box.current?.contains(e.target as Node) && onCancel?.()
+    document.addEventListener('mousedown', h)
+    return () => document.removeEventListener('mousedown', h)
   }, [onCancel])
 
-  const filtered = names.filter((n) =>
-    n.toLowerCase().includes(query.toLowerCase()),
-  )
+  const list = names.filter(n => n.toLowerCase().includes(q.toLowerCase()))
 
   return (
     <div
-      ref={wrapperRef}
+      ref={box}
       className="absolute z-50 w-56 max-h-80 overflow-auto rounded bg-gray-800 p-3 text-white shadow-lg"
     >
-      {/* Suchfeld + Cancel */}
       <div className="mb-2 flex gap-2">
         <input
           autoFocus
+          value={q}
+          onChange={e => setQ(e.target.value)}
           placeholder="Pokémon suchen…"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
           className="flex-1 rounded bg-gray-700 px-2 py-1 text-sm outline-none"
         />
         {onCancel && (
@@ -69,13 +54,12 @@ export default function PokemonSelect({
         )}
       </div>
 
-      {/* Trefferliste */}
-      {filtered.length === 0 && (
+      {list.length === 0 && (
         <p className="text-sm text-gray-400">Kein Treffer</p>
       )}
 
       <ul>
-        {filtered.map((name) => (
+        {list.map(name => (
           <li key={name}>
             <button
               onClick={() => onSelect(name)}
