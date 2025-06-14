@@ -3,23 +3,25 @@ import LocationSelect from '@/components/ui/LocationSelect'
 import PokemonSelect  from '@/components/ui/PokemonSelect'
 import { sprite } from '@/utils/sprites'
 import { v4 as uuid } from 'uuid'
+import type { Encounter } from '@/context/RunContext'   // oder eigenen Typ
 
 const statusClasses = { Team:'bg-green-600', Box:'bg-yellow-500', Tod:'bg-red-600' }
 
 export default function EncountersTab() {
   const { trainers, encounters, setEncounters } = useRun()
 
-  const addEncounter = () => setEncounters(e => [
-    ...e,
-    {
-      id: uuid(),
-      location: '',
-      slots: trainers.map(t => ({ trainer: t, name: '' })),
-      status: 'Box'
-    }
-  ])
+  const addEncounter = () =>
+   setEncounters((e) => [
+     ...e,
+     {
+       id: uuid(),
+       location: '',
+       slots: trainers.map((t) => ({ trainer: t, name: '' })),
+       status: 'Box' as const
+     } satisfies Encounter
+   ])
 
-  const patch = (id:string, fn:(e:any)=>any) =>
+  const patch = (id: string, fn: (e: Encounter) => Encounter) =>
     setEncounters(prev => prev.map(e => e.id===id ? fn(e) : e))
 
   return (
@@ -85,7 +87,7 @@ export default function EncountersTab() {
           onClick={addEncounter}
           className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
         >
-          + Reihe
+          + 
         </button>
       </div>
     </>
