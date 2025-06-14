@@ -20,6 +20,12 @@ export default function GraveTab() {
   const { trainers, encounters, setEncounters } = useRun()
   const rows = encounters.filter(e => e.status === 'Tod')
 
+    /* Killer-Zählung */
+  const killCount = rows.reduce<Record<string, number>>((acc, enc) => {
+    if (enc.killer) acc[enc.killer] = (acc[enc.killer] ?? 0) + 1
+    return acc
+  }, {})
+
   const [editing, setEditing] =
     useState<{ id: string; idx: number } | null>(null)
 
@@ -36,10 +42,12 @@ export default function GraveTab() {
         <tr className="bg-gray-700 text-white">
           <th className="p-2">Herkunft</th>
 
-          {/* Trainer- & Typ-Spalten */}
+          {/* Trainer-Name mit Count + Typ-Spalte */}
           {trainers.map(t => (
             <>
-              <th key={t} className="p-2">{t}</th>
+              <th key={t} className="p-2">
+                {t} ({killCount[t] ?? 0})
+              </th>
               <th key={`${t}-typ`} className="p-2 w-20" />   {/* leer */}
             </>
           ))}

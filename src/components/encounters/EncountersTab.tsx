@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Pencil } from 'lucide-react'
+import { Pencil, MinusCircle } from 'lucide-react'
 import { v4 as uuid } from 'uuid'
 import TypeIcon from '@/components/ui/TypeIcon'
 
@@ -36,6 +36,9 @@ export default function EncountersTab() {
       } satisfies Encounter,
     ])
 
+    const removeRow = (id: string) =>
+     setEncounters(prev => prev.filter(e => e.id !== id))
+
   /* ------- JSX ------- */
   return (
     <>
@@ -53,7 +56,7 @@ export default function EncountersTab() {
             ))}
 
             <th className="p-2 w-32">Status</th>
-            <th className="p-2 w-12" />
+            <th className="p-2 w-12" />      {/* Platz für Trash-Icon */}
           </tr>
         </thead>
 
@@ -146,8 +149,16 @@ export default function EncountersTab() {
                 </select>
               </td>
 
-              {/* Löschen (unverändert) */}
-              <td className="p-2 w-12 text-center">…</td>
+              {/* Löschen */}
+              <td className="p-2 w-12 text-center">
+                <button
+                  onClick={() => removeRow(enc.id)}
+                  className="text-red-600 hover:text-red-800"
+                  aria-label="Eintrag löschen"
+                >
+                  <MinusCircle size={20} fill="white" className="stroke-red-600" />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
