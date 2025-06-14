@@ -93,13 +93,13 @@ export default function EncountersTab() {
                     {slot.name && !isEditing && (
                       <button
                         onClick={() => setEditing({ id: enc.id, idx })}
-                        className="group mx-auto relative h-12"
+                        className="group mx-auto relative h-24"
                         aria-label="Pokémon bearbeiten"
                       >
                         <img
                           src={sprite(slot.name)}
                           alt={slot.name}
-                          className="h-12 mx-auto"
+                          className="h-24 mx-auto"
                         />
                         <Pencil
                           size={18}
