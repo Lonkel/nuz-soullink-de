@@ -1,3 +1,4 @@
+// src/components/ui/PokemonSelect.tsx
 import { useEffect, useRef, useState } from 'react'
 
 export interface PokemonSelectProps {
@@ -6,7 +7,8 @@ export interface PokemonSelectProps {
   names?: string[]
 }
 
-const fallback = [
+/* kleine Fallback-Liste, falls nichts via props kommt */
+const defaultNames = [
   'Bisasam', 'Bisaknosp', 'Bisaflor',
   'Glumanda', 'Glutexo', 'Glurak',
   'Schiggy', 'Schillok', 'Turtok'
@@ -15,31 +17,36 @@ const fallback = [
 export default function PokemonSelect({
   onSelect,
   onCancel,
-  names = fallback
+  names = defaultNames
 }: PokemonSelectProps) {
-  const [q, setQ] = useState('')
-  const box = useRef<HTMLDivElement>(null)
+  const [query, setQuery] = useState('')
+  const boxRef = useRef<HTMLDivElement>(null)
 
-  /* Outside-click => cancel */
+  /* Outside-Click → onCancel */
   useEffect(() => {
-    const h = (e: MouseEvent) =>
-      !box.current?.contains(e.target as Node) && onCancel?.()
-    document.addEventListener('mousedown', h)
-    return () => document.removeEventListener('mousedown', h)
+    const handle = (e: MouseEvent) => {
+      if (!boxRef.current?.contains(e.target as Node)) onCancel?.()
+    }
+    document.addEventListener('mousedown', handle)
+    return () => document.removeEventListener('mousedown', handle)
   }, [onCancel])
 
-  const list = names.filter(n => n.toLowerCase().includes(q.toLowerCase()))
+  const matches = names.filter(n =>
+    n.toLowerCase().includes(query.toLowerCase())
+  )
 
   return (
     <div
-      ref={box}
-      className="absolute z-50 w-56 max-h-80 overflow-auto rounded bg-gray-800 p-3 text-white shadow-lg"
+      ref={boxRef}
+      className="absolute z-50 w-56 max-h-80 overflow-auto rounded
+                 bg-gray-800 p-3 text-white shadow-lg"
     >
+      {/* Suchfeld + Cancel */}
       <div className="mb-2 flex gap-2">
         <input
           autoFocus
-          value={q}
-          onChange={e => setQ(e.target.value)}
+          value={query}
+          onChange={e => setQuery(e.target.value)}
           placeholder="Pokémon suchen…"
           className="flex-1 rounded bg-gray-700 px-2 py-1 text-sm outline-none"
         />
@@ -54,16 +61,18 @@ export default function PokemonSelect({
         )}
       </div>
 
-      {list.length === 0 && (
+      {/* Trefferliste */}
+      {matches.length === 0 && (
         <p className="text-sm text-gray-400">Kein Treffer</p>
       )}
 
       <ul>
-        {list.map(name => (
+        {matches.map(name => (
           <li key={name}>
             <button
               onClick={() => onSelect(name)}
-              className="w-full rounded px-2 py-1 text-left hover:bg-blue-600"
+              className="w-full rounded px-2 py-1 text-left
+                         hover:bg-blue-600"
             >
               {name}
             </button>
