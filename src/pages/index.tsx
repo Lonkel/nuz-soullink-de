@@ -1,67 +1,101 @@
-// pages/index.tsx  (oder Re_Index.tsx)
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
+import { v4 as uuid } from 'uuid'
 
-type RunMeta = { id: string; title: string } // passt du später an
-
-export default function Home() {
+export default function StartPage() {
   const router = useRouter()
-  const [runs, setRuns] = useState<RunMeta[] | null>(null)
 
-  /* ----------------------------------------------------------
-     1)  Beim ersten Render client-seitig gespeicherte Runs laden
-  ---------------------------------------------------------- */
-  useEffect(() => {
-    const stored = localStorage.getItem('runs')       // <- dein Key
-    if (stored) {
-      setRuns(JSON.parse(stored) as RunMeta[])
-    } else {
-      setRuns([])                                     // keine Runs vorhanden
-    }
-  }, [])
+  /* Spiel & Trainer-States */
+  const [game, setGame] = useState('')
+  const [trainers, setTrainers] = useState<string[]>([''])
 
-  /* ----------------------------------------------------------
-     2)  Auto-Redirect, wenn exakt EIN Run existiert
-  ---------------------------------------------------------- */
-  useEffect(() => {
-    if (runs && runs.length === 1) {
-      router.replace(`/run/${runs[0].id}`)
-    }
-  }, [runs, router])
+  /* Trainer-Helpers */
+  const addTrainer = () => setTrainers(t => [...t, ''])
+  const updateTrainer = (i: number, name: string) =>
+    setTrainers(t => t.map((n, idx) => (idx === i ? name : n)))
+  const removeTrainer = (i: number) =>
+    setTrainers(t => t.filter((_, idx) => idx !== i))
 
-  /* ----------------------------------------------------------
-     3)  Anzeige – mehrere oder gar keine Runs
-  ---------------------------------------------------------- */
-  if (runs === null) return null // noch am Laden
+  /* Start-Button */
+  const startRun = () => {
+    if (!game || trainers.some(n => n.trim() === '')) return
+    const runId = uuid()
+    router.push(
+      `/run/${runId}?game=${encodeURIComponent(game)}&trainers=${encodeURIComponent(
+        trainers.join('|'),
+      )}`,
+    )
+  }
+
+  const startDisabled = !game || trainers.some(n => n.trim() === '')
 
   return (
-    <div className="p-8 text-white">
-      <h1 className="text-3xl font-bold mb-6">Wähle deinen Run</h1>
+    <main className="mx-auto max-w-xl p-8 space-y-6 text-white">
+      <h1 className="text-3xl font-bold">Neuer Soullink-Run</h1>
 
-      {runs.length === 0 && (
-        <div className="mb-6">
-          Du hast noch keinen Run angelegt.
-        </div>
-      )}
+      {/* Spiel wählen */}
+      <section className="space-y-2">
+        <label className="block font-semibold">Spiel</label>
+        <select
+          value={game}
+          onChange={e => setGame(e.target.value)}
+          className="w-full rounded bg-gray-800 p-2"
+        >
+          <option value="">– auswählen –</option>
+          <option value="RB">Rot / Blau</option>
+          <option value="G">Gelb</option>
+          <option value="GSK">Gold / Silber / Kristall</option>
+          <option value="HGSS">HeartGold / SoulSilver</option>
+          <option value="RSE">Rubin / Saphir / Smaragd</option>
+          <option value="ORAS">Omega Rubin / Alpha Saphir</option>
+          <option value="DPPT">Diamant / Perl / Platin</option>
+          <option value="BDSP">BrillantDiamant / LeuchtPerl</option>
+          <option value="XY">X / Y</option>
+          <option value="SMUSUM">Sonne / Mond / Ultra</option>
+        </select>
+      </section>
 
-      <ul className="space-y-2 list-disc pl-6 mb-8">
-        {runs.map(r => (
-          <li key={r.id}>
-            <Link href={`/run/${r.id}`} className="underline">
-              {r.title || r.id}
-            </Link>
-          </li>
+      {/* Trainer */}
+      <section className="space-y-3">
+        <div className="font-semibold">Trainer</div>
+
+        {trainers.map((name, idx) => (
+          <div key={idx} className="flex gap-2">
+            <input
+              value={name}
+              onChange={e => updateTrainer(idx, e.target.value)}
+              placeholder={`Trainer ${idx + 1}`}
+              className="flex-1 rounded bg-gray-800 p-2"
+            />
+            {trainers.length > 1 && (
+              <button
+                onClick={() => removeTrainer(idx)}
+                className="rounded bg-red-600 px-3 hover:bg-red-700"
+              >
+                ✕
+              </button>
+            )}
+          </div>
         ))}
-      </ul>
 
-      {/* Button zum neuen Run-Wizard / Setup-Seite */}
-      <Link
-        href="/setup"
-        className="inline-block rounded bg-green-600 px-4 py-2 font-bold hover:bg-green-500"
+        <button
+          onClick={addTrainer}
+          className="rounded bg-blue-600 px-3 py-1 hover:bg-blue-700"
+        >
+          + Trainer
+        </button>
+      </section>
+
+      {/* Start */}
+      <button
+        onClick={startRun}
+        disabled={startDisabled}
+        className={`w-full rounded px-4 py-2 text-lg font-bold ${
+          startDisabled ? 'bg-gray-600' : 'bg-green-600 hover:bg-green-700'
+        }`}
       >
-        Neuen Run erstellen
-      </Link>
-    </div>
+        Start
+      </button>
+    </main>
   )
 }
