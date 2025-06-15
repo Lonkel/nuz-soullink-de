@@ -4,7 +4,8 @@
 import { useRun, Status } from '@/context/RunContext'
 import type { Encounter } from '@/context/RunContext'
 
-import TypeGrid   from '@/components/TypeGrid'          // ← NEU
+import TypeIcon   from '@/components/ui/TypeIcon'
+import TypeGrid   from '@/components/TypeGrid'
 import { sprite } from '@/utils/sprites'
 import { pokemonTypes } from '@/utils/pokemonTypes'
 import { TYPE_CHART }   from '@/data/typeChart'
@@ -15,15 +16,14 @@ const statusClasses = {
   Tod:  'bg-red-600',
 } as const
 
-/* ───────── Effektivitäts-Bucket eines Pokémon ───────── */
 type BucketKey = 'x4' | 'x2' | 'x0,5' | 'x0,25' | 'x0'
 const bucketKeys: BucketKey[] = ['x4', 'x2', 'x0,5', 'x0,25', 'x0']
 
+/* ────── Schwächen/Resists berechnen ────── */
 function calcBuckets(pokeName: string) {
   const defs = pokemonTypes(pokeName).map(t => t.toLowerCase())
-
-  const buckets: Record<BucketKey, string[]> = {
-    'x4': [], 'x2': [], 'x0,5': [], 'x0,25': [], 'x0': [],
+  const b: Record<BucketKey, string[]> = {
+    x4: [], x2: [], 'x0,5': [], 'x0,25': [], x0: [],
   }
 
   for (const att of Object.keys(TYPE_CHART)) {
@@ -31,32 +31,35 @@ function calcBuckets(pokeName: string) {
     const m2 = defs[1] ? TYPE_CHART[att]?.[defs[1]] ?? 1 : 1
     const mult = m1 * m2
 
-    if      (mult === 4)    buckets['x4'].push(att)
-    else if (mult === 2)    buckets['x2'].push(att)
-    else if (mult === 0.5)  buckets['x0,5'].push(att)
-    else if (mult === 0.25) buckets['x0,25'].push(att)
-    else if (mult === 0)    buckets['x0'].push(att)
+    if      (mult === 4)     b.x4.push(att)
+    else if (mult === 2)     b.x2.push(att)
+    else if (mult === 0.5)   b['x0,5'].push(att)
+    else if (mult === 0.25)  b['x0,25'].push(att)
+    else if (mult === 0)     b.x0.push(att)
   }
-  return buckets
+  return b
 }
 
-/* ─────────────────────────────────────────────────────── */
+/* ───────────────────────────────────────────────────────────── */
 export default function TeamsTab() {
   const { trainers, encounters, setEncounters } = useRun()
 
+  /* Helper zum Patchen eines Encounters */
   const patch = (id: string, fn: (e: Encounter) => Encounter) =>
     setEncounters(prev => prev.map(e => (e.id === id ? fn(e) : e)))
 
-  /* Daten nach Trainer gruppieren */
+  /* ───── Datenstruktur für die Tabellenzeilen ───── */
   type Row = {
     id: string
     idx: number
     name: string
-    status: Status
     trainer: string
+    status: Status
     buckets: Record<BucketKey, string[]>
+    partners: string[]
   }
 
+  /* nach Trainer gruppieren */
   const rowsByTrainer: Record<string, Row[]> = Object.fromEntries(
     trainers.map(t => [t, [] as Row[]]),
   )
@@ -66,13 +69,19 @@ export default function TeamsTab() {
     .forEach(e =>
       e.slots.forEach((slot, idx) => {
         if (!slot.name) return
+
+        const partners = e.slots
+          .filter(s => s.trainer !== slot.trainer && s.name)
+          .map(s => s.name as string)
+
         rowsByTrainer[slot.trainer].push({
           id: e.id,
           idx,
           name: slot.name,
-          status: e.status,
           trainer: slot.trainer,
+          status: e.status,
           buckets: calcBuckets(slot.name),
+          partners,
         })
       }),
     )
@@ -87,20 +96,27 @@ export default function TeamsTab() {
         return (
           <table
             key={trainer}
-            className="w-full text-sm table-fixed border-collapse border border-white/30"
-          >
+            className="w-full text-sm table-fixed border-collapse
+                       border-2 border-white/30"
+             >
+            {/* ── Spaltenbreiten ── */}
             <colgroup>
-              <col className="w-32" />
-              <col className="w-24" />
+              <col className="w-20" />   {/* Sprite */}
+              <col className="w-16" />   {/* Link-Sprite */}
+              <col className="w-24" />   {/* Typen */}
               {bucketKeys.map(k => (
                 <col key={k} className="w-28" />
               ))}
-              <col className="w-24" />
+              <col className="w-24" />   {/* Status */}
             </colgroup>
 
+            {/* ── Kopf ── */}
             <thead>
-              <tr className="bg-gray-700 text-white border-b border-white/30">
+              <tr className="bg-gray-700 text-white
+                             border-b-2 border-white/30
+                             divide-x-2 divide-white/30">
                 <th className="p-2 text-left">{trainer}</th>
+                <th className="p-2">Link</th>
                 <th className="p-2">Typ</th>
                 <th className="p-2">x4</th>
                 <th className="p-2">x2</th>
@@ -111,28 +127,47 @@ export default function TeamsTab() {
               </tr>
             </thead>
 
+            {/* ── Body ── */}
             <tbody>
               {rows.map(row => {
                 const types = pokemonTypes(row.name)
 
                 return (
-                  <tr key={`${row.id}-${row.idx}`} className="border-b border-white/30">
-                    {/* Pokémon + Sprite */}
-                     <td className="p-2 flex justify-center">
-                       <img
-                         src={sprite(row.name)}
-                         alt={row.name}
-                         title={row.name}        /* Tooltip beim Hover */
-                         className="h-24"
-                       />
-                     </td>
+                  <tr
+                    key={`${row.id}-${row.idx}`}
+                    className="border-b-2 border-white/20
+                               divide-x divide-white/20"
+                   >
+                    {/* Sprite */}
+                    <td className="p-2 flex justify-center">
+                      <img
+                        src={sprite(row.name)}
+                        alt={row.name}
+                        title={row.name}
+                        className="h-14"
+                      />
+                    </td>
+
+                    {/* Partner-Sprite(s) */}
+                    <td className="p-2 relative">
+                      {row.partners.map((p, i) => 
+                      (<img
+                          key={p}
+                          src={sprite(p)}
+                          alt={p}
+                          title={p}
+                          className="h-8 absolute bottom-1 right-1"
+                          style={{ right: `${i * 2rem}px` }}
+                        />
+                      ))}
+                    </td>
 
                     {/* Typen */}
                     <td className="p-2">
                       <TypeGrid types={types} />
                     </td>
 
-                    {/* Effektivität */}
+                    {/* Schwächen/Resists */}
                     {bucketKeys.map(k => (
                       <td key={k} className="p-2">
                         <TypeGrid types={row.buckets[k]} />
@@ -144,7 +179,10 @@ export default function TeamsTab() {
                       <select
                         value={row.status}
                         onChange={e =>
-                          patch(row.id, enc => ({ ...enc, status: e.target.value as Status }))
+                          patch(row.id, enc => ({
+                            ...enc,
+                            status: e.target.value as Status,
+                          }))
                         }
                         className={`w-full font-bold text-white rounded ${statusClasses[row.status]}`}
                       >
@@ -161,5 +199,5 @@ export default function TeamsTab() {
         )
       })}
     </div>
-  )
+   )
 }
