@@ -66,8 +66,8 @@ export default function EncountersTab() {
               key={enc.id}
               className={
                 [
-                  'border-t h-32 align-top',
-                  enc.status === 'Tod' && 'bg-gray-800/30 text-gray-300',
+                  'border-t h-32',
+                  enc.status === 'Tod' && 'bg-gray-800/30 text-gray-400',
                 ]
                   .filter(Boolean)
                   .join(' ')
@@ -109,11 +109,11 @@ export default function EncountersTab() {
                           onClick={() => setEditing({ id: enc.id, idx })}
                           className="group mx-auto relative h-12"
                         >
-                          <img
-                            src={sprite(slot.name)}
-                            alt={slot.name}
-                            className="h-24 mx-auto"
-                          />
+                           <img
+                             src={sprite(slot.name)}
+                             alt={slot.name}
+                             className={`h-24 mx-auto ${enc.status === 'Tod' ? 'grayscale' : ''}`}
+                            />
                           <Pencil
                             size={18}
                             fill="white"
@@ -137,8 +137,8 @@ export default function EncountersTab() {
 
                     {/* Typ-Zelle */}
                     <td key={`type-${idx}`} className="p-2 text-sm text-center">
-                      {types.map(t => <TypeIcon key={t} type={t} />)
-}
+                      {types.map(t => <TypeIcon key={t} type={t} className={enc.status === 'Tod' ? 'grayscale' : ''} />)
+                      }
                     </td>
                   </>
                 )
