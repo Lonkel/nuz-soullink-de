@@ -4,7 +4,6 @@
 import { useRun, Status } from '@/context/RunContext'
 import type { Encounter } from '@/context/RunContext'
 
-import TypeIcon   from '@/components/ui/TypeIcon'
 import TypeGrid   from '@/components/TypeGrid'
 import { sprite } from '@/utils/sprites'
 import { pokemonTypes } from '@/utils/pokemonTypes'
