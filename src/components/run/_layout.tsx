@@ -4,7 +4,7 @@
 import { Tab } from '@headlessui/react'
 
 import EncountersTab from '@/components/encounters/EncountersTab'
-import TeamTab       from '@/components/team/TeamTab'
+import TeamTab       from '@/components/team/TeamsTab'
 import BoxTab        from '@/components/box/BoxTab'
 import GraveTab      from '@/components/graveyard/GraveTab'
 
