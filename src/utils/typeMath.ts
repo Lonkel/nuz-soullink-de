@@ -5,15 +5,15 @@ import type { Encounter } from '@/context/RunContext'
 export type Multiplier = 4 | 2 | 1 | 0.5 | 0.25 | 0
 
 /* ---------- 1  Label-Typ ---------- */
-export type Label = 'x4' | 'x2' | 'x1' | 'x1/2' | 'x1/4' | 'x0'
+export type Label = 'x4' | 'x2' | 'x1' | 'x0,5' | 'x0,25' | 'x0'
 
 /* ---------- 2  Statische Mapping-Tabelle ---------- */
 const LABEL_TO_NUM: Record<Label, Multiplier> = {
   'x4': 4,
   'x2': 2,
   'x1': 1,
-  'x1/2': 0.5,
-  'x1/4': 0.25,
+  'x0,5': 0.5,
+  'x0,25': 0.25,
   'x0': 0,
 }
 

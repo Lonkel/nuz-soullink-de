@@ -5,6 +5,7 @@ import { useRun, Status } from '@/context/RunContext'
 import type { Encounter } from '@/context/RunContext'
 
 import TypeIcon   from '@/components/ui/TypeIcon'
+import TypeGrid   from '@/components/TypeGrid'          // ← NEU
 import { sprite } from '@/utils/sprites'
 import { pokemonTypes } from '@/utils/pokemonTypes'
 import { TYPE_CHART }   from '@/data/typeChart'
@@ -16,14 +17,14 @@ const statusClasses = {
 } as const
 
 /* ───────── Effektivitäts-Bucket eines Pokémon ───────── */
-type BucketKey = 'x4' | 'x2' | 'x1/2' | 'x1/4' | 'x0'
-const bucketKeys: BucketKey[] = ['x4', 'x2', 'x1/2', 'x1/4', 'x0']
+type BucketKey = 'x4' | 'x2' | 'x0,5' | 'x0,25' | 'x0'
+const bucketKeys: BucketKey[] = ['x4', 'x2', 'x0,5', 'x0,25', 'x0']
 
 function calcBuckets(pokeName: string) {
   const defs = pokemonTypes(pokeName).map(t => t.toLowerCase())
 
   const buckets: Record<BucketKey, string[]> = {
-    'x4': [], 'x2': [], 'x1/2': [], 'x1/4': [], 'x0': [],
+    'x4': [], 'x2': [], 'x0,5': [], 'x0,25': [], 'x0': [],
   }
 
   for (const att of Object.keys(TYPE_CHART)) {
@@ -31,13 +32,12 @@ function calcBuckets(pokeName: string) {
     const m2 = defs[1] ? TYPE_CHART[att]?.[defs[1]] ?? 1 : 1
     const mult = m1 * m2
 
-    if (mult === 4)      buckets['x4'].push(att)
-    else if (mult === 2) buckets['x2'].push(att)
-    else if (mult === 0.5)  buckets['x1/2'].push(att)
-    else if (mult === 0.25) buckets['x1/4'].push(att)
+    if      (mult === 4)    buckets['x4'].push(att)
+    else if (mult === 2)    buckets['x2'].push(att)
+    else if (mult === 0.5)  buckets['x0,5'].push(att)
+    else if (mult === 0.25) buckets['x0,25'].push(att)
     else if (mult === 0)    buckets['x0'].push(att)
   }
-
   return buckets
 }
 
@@ -105,8 +105,8 @@ export default function TeamsTab() {
                 <th className="p-2">Typ</th>
                 <th className="p-2">x4</th>
                 <th className="p-2">x2</th>
-                <th className="p-2">x1/2</th>
-                <th className="p-2">x1/4</th>
+                <th className="p-2">x0,5</th>
+                <th className="p-2">x0,25</th>
                 <th className="p-2">x0</th>
                 <th className="p-2">Status</th>
               </tr>
@@ -126,21 +126,13 @@ export default function TeamsTab() {
 
                     {/* Typen */}
                     <td className="p-2">
-                      <div className="flex gap-1">
-                        {types.map(t => (
-                          <TypeIcon key={t} type={t} />
-                        ))}
-                      </div>
+                      <TypeGrid types={types} />
                     </td>
 
                     {/* Effektivität */}
                     {bucketKeys.map(k => (
                       <td key={k} className="p-2">
-                        <div className="flex gap-1 flex-wrap">
-                          {row.buckets[k].map(t => (
-                            <TypeIcon key={t} type={t} />
-                          ))}
-                        </div>
+                        <TypeGrid types={row.buckets[k]} />
                       </td>
                     ))}
 

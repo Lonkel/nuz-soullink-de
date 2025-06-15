@@ -1,7 +1,7 @@
 // ───────────────────────────────────────────────────────────────
 // TrainerTab  –  shows one trainer’s current team and,
 //                for every single Pokémon, its damage chart
-//                (x0 | x1/4 | x1/2 | x2 | x4).
+//                (x0 | x0,25 | x0,5 | x2 | x4).
 // ───────────────────────────────────────────────────────────────
 import { useMemo } from 'react'
 import { useRun }   from '@/context/RunContext'
@@ -10,8 +10,8 @@ import { pokemonTypes } from '@/utils/pokemonTypes'
 import TypeIcon         from '@/components/ui/TypeIcon'
 import { sprite }       from '@/utils/sprites'
 
-type Label = 'x0' | 'x1/4' | 'x1/2' | 'x2' | 'x4'
-const labels: Label[] = ['x0', 'x1/4', 'x1/2', 'x2', 'x4']
+type Label = 'x0' | 'x0,25' | 'x0,5' | 'x2' | 'x4'
+const labels: Label[] = ['x0', 'x0,25', 'x0,5', 'x2', 'x4']
 
 /* ——————————————————————————————————————————————————————————— */
 export default function TrainerTab({ trainer }: { trainer: string }) {
@@ -35,8 +35,8 @@ export default function TrainerTab({ trainer }: { trainer: string }) {
       const def = pokemonTypes(poke).map(t => t.toLowerCase())
       const bucket: Record<Label, string[]> = {
         'x0': [],
-        'x1/4': [],
-        'x1/2': [],
+        'x0,25': [],
+        'x0,5': [],
         'x2': [],
         'x4': [],
       }
@@ -46,8 +46,8 @@ export default function TrainerTab({ trainer }: { trainer: string }) {
         const m2 = def[1] ? TYPE_CHART[att]?.[def[1]] ?? 1 : 1
         const mult = m1 * m2
         if (mult === 0) bucket['x0'].push(att)
-        else if (mult === 0.25) bucket['x1/4'].push(att)
-        else if (mult === 0.5) bucket['x1/2'].push(att)
+        else if (mult === 0.25) bucket['x0,25'].push(att)
+        else if (mult === 0.5) bucket['x0,5'].push(att)
         else if (mult === 2) bucket['x2'].push(att)
         else if (mult === 4) bucket['x4'].push(att)
       })
