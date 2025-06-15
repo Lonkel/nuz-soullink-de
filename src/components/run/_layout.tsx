@@ -32,44 +32,45 @@ export default function Layout() {
 
   return (
     <main className="max-w-7xl mx-auto p-6">
-      <h1 className="mb-6 text-2xl font-bold text-white">
+      <h1 className="sticky top-0 z-40 bg-gray-900
+               px-4 py-4 text-2xl font-bold text-white">
         Soullink&nbsp;–&nbsp;Pokémon&nbsp;{fullTitle}
       </h1>
 
-      <Tab.Group>
-        <Tab.List className="flex gap-2 border-b pb-2">
-          {tabs.map((t) => (
-            <Tab
-              key={t}
-              className={({ selected }) =>
-                [
-                  'px-4 py-2 rounded-t focus:outline-none',
-                  selected
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-700 text-white hover:bg-gray-600',
-                ].join(' ')
-              }
-            >
-              {t}
-            </Tab>
-          ))}
-        </Tab.List>
-
-        <Tab.Panels className="pt-4">
-          <Tab.Panel>
-            <EncountersTab />
-          </Tab.Panel>
-          <Tab.Panel>
-            <TeamTab />
-          </Tab.Panel>
-          <Tab.Panel>
-            <BoxTab />
-          </Tab.Panel>
-          <Tab.Panel>
-            <GraveTab />
-          </Tab.Panel>
-        </Tab.Panels>
-      </Tab.Group>
+        <Tab.Group>
+         {/* klebt direkt unter der Überschrift (4 rem = 64 px) */}
+          <Tab.List
+            className="sticky top-[4rem] z-30
+                       bg-gray-900 flex gap-2
+                       border-b border-gray-700 px-4 pb-2">
+            {tabs.map(t => (
+              <Tab
+                key={t}
+                className={({ selected }) =>
+                  [
+                    'px-4 py-2 rounded-t focus:outline-none transition-colors',
+                    selected
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-700 text-white hover:bg-gray-600',
+                  ].join(' ')
+                }
+              >
+                {t}
+              </Tab>
+            ))}
+          </Tab.List>
+    
+          {/* Inhalt scrollt unter Header + Tabs hindurch */}
+          <Tab.Panels
+            /* 100 vh minus 4 rem Header minus 2.75 rem Tabs ≈ 7 rem */
+            className="h-[calc(100vh-7rem)] overflow-y-auto px-4 pt-4"
+          >
+            <Tab.Panel><EncountersTab /></Tab.Panel>
+            <Tab.Panel><TeamTab /></Tab.Panel>
+            <Tab.Panel><BoxTab /></Tab.Panel>
+            <Tab.Panel><GraveTab /></Tab.Panel>
+          </Tab.Panels>
+        </Tab.Group>
     </main>
   )
 }
