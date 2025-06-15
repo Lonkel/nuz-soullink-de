@@ -14,7 +14,6 @@ import { sprite }     from '@/utils/sprites'
 import { pokemonTypes } from '@/utils/pokemonTypes'
 import {
   TYPE_CHART,
-  labelToNumber,
   Multiplier,
   Label,
 } from '@/utils/typeMath'
