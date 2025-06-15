@@ -62,7 +62,17 @@ export default function EncountersTab() {
 
         <tbody>
           {encounters.map((enc) => (
-            <tr key={enc.id} className="border-t h-32 align-middle">
+            <tr
+              key={enc.id}
+              className={
+                [
+                  'border-t h-32 align-top',
+                  enc.status === 'Tod' && 'bg-gray-800/30 text-gray-300',
+                ]
+                  .filter(Boolean)
+                  .join(' ')
+              }
+            >
               {/* Herkunft */}
               <td className="p-2 align-middle">
                 <LocationSelect
