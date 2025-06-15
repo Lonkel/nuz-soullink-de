@@ -143,29 +143,28 @@ useEffect(() => {
   let cancelled = false
 
   ;(async () => {
-    const { data: row, error } = await supabase
+    const { data: row, error, status } = await supabase
       .from('runs')
       .select('data')
       .eq('id', runId)
-      .single()
+      .maybeSingle()
 
-    if (cancelled) return
-
+    
     if (row) {
       /* bereits vorhanden → in den React-State */
-      setRun(row.data)
-    } else if (error?.code === 'PGRST116') {
-      /* Zeile fehlt → frische Default-Daten anlegen */
-      const fresh: RunRow['data'] = {
-        game:      initialGame,
-        trainers:  initialTrainers,
-        encounters: [],
-        team:       [],
-      }
-      await supabase.from('runs').insert({ id: runId, data: fresh })
-      setRun(fresh)
+      setRun(row.data)          // Row existiert
+    } else if (status === 406 || status === 200) {
+      // noch keine Zeile → Default anlegen
+     const fresh = {
+       game: initialGame,
+       trainers: initialTrainers,
+       encounters: [],
+       team: [],
+     }
+     await supabase.from('runs').insert({ id: runId, data: fresh })
+     setRun(fresh)
     } else if (error) {
-      console.error('Loader error', error)
+      console.error(error)
     }
   })()
 
