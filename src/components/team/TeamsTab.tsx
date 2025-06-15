@@ -123,7 +123,7 @@ export default function TeamsTab() {
                          src={sprite(row.name)}
                          alt={row.name}
                          title={row.name}        /* Tooltip beim Hover */
-                         className="h-14"
+                         className="h-24"
                        />
                      </td>
 
