@@ -1,22 +1,18 @@
 // ───────────────────────────────────────────────────────────────
-// TeamTab  –  shows   1) damage-chart   2) team table
+// TeamTab – 1) Schaden-Matrix  2) eigentliche Team-Tabelle
 // ───────────────────────────────────────────────────────────────
 import { useState } from 'react'
 import { Pencil } from 'lucide-react'
 
-import { useRun, Status } from '@/context/RunContext'
-import type { Encounter } from '@/context/RunContext'
-
-import PokemonSelect  from '@/components/ui/PokemonSelect'
-import LocationSelect from '@/components/ui/LocationSelect'
-import TypeIcon       from '@/components/ui/TypeIcon'
-import { sprite }     from '@/utils/sprites'
-import { pokemonTypes } from '@/utils/pokemonTypes'
-import {
-  TYPE_CHART,
-  Multiplier,
-  Label,
-} from '@/utils/typeMath'
+import { useRun, Status }   from '@/context/RunContext'
+import type { Encounter }   from '@/context/RunContext'
+import PokemonSelect        from '@/components/ui/PokemonSelect'
+import LocationSelect       from '@/components/ui/LocationSelect'
+import TypeIcon             from '@/components/ui/TypeIcon'
+import { sprite }           from '@/utils/sprites'
+import { pokemonTypes }     from '@/utils/pokemonTypes'
+import { TYPE_CHART }       from '@/data/typeChart'
+import type { Multiplier, Label } from '@/utils/typeMath'
 
 const statusClasses = {
   Team: 'bg-green-600',
@@ -24,15 +20,12 @@ const statusClasses = {
   Tod:  'bg-red-600',
 } as const
 
-
-
-/* ----- helpers ------------------------------------------------ */
-
+/* ───────── aggregiert Schwächen / Resistenzen pro Trainer ───── */
 function aggregatePerTrainer(encounters: Encounter[], trainers: string[]) {
-  /* sammle alle Pokémon pro Trainer */
   const mons: Record<string, string[]> = Object.fromEntries(
     trainers.map(t => [t, [] as string[]]),
   )
+
   encounters
     .filter(e => e.status === 'Team')
     .forEach(e =>
@@ -41,13 +34,8 @@ function aggregatePerTrainer(encounters: Encounter[], trainers: string[]) {
       }),
     )
 
-  /* berechne min / max & ordne jedem Typ eine Zeile (Label) zu */
-  const chart: Record<
-    string,               // trainer
-    Record<Label, string[]> // label ➜ list attacker types
-  > = {}
+  const chart: Record<string, Record<Label, string[]>> = {}
   trainers.forEach(t => {
-    const pokeNames = mons[t]
     const map: Record<Label, string[]> = {
       'x4': [],
       'x2': [],
@@ -58,25 +46,22 @@ function aggregatePerTrainer(encounters: Encounter[], trainers: string[]) {
     }
 
     Object.keys(TYPE_CHART).forEach(att => {
-      /* min & max Effektivität über ALLE Pokémon dieses Trainers */
       let min: Multiplier = 4
       let max: Multiplier = 0
-      pokeNames.forEach(pn => {
-        const defs = pokemonTypes(pn).map(x => x.toLowerCase())
-        const m1 =
-          TYPE_CHART[att]?.[defs[0]] ?? 1
-        const m2 =
-          defs[1] ? TYPE_CHART[att]?.[defs[1]] ?? 1 : 1
+
+      mons[t].forEach(pn => {
+        const def = pokemonTypes(pn).map(x => x.toLowerCase())
+        const m1 = TYPE_CHART[att]?.[def[0]] ?? 1
+        const m2 = def[1] ? TYPE_CHART[att]?.[def[1]] ?? 1 : 1
         const m = (m1 * m2) as Multiplier
         min = Math.min(min, m) as Multiplier
         max = Math.max(max, m) as Multiplier
       })
 
-      /* Zu welcher Zeile gehört der Angreifer-Typ? */
       let label: Label = 'x1'
       if (max >= 4) label = 'x4'
       else if (max >= 2) label = 'x2'
-      else if (min <= 0) label = 'x0'
+      else if (min === (0 as Multiplier)) label = 'x0'
       else if (min <= 0.25) label = 'x1/4'
       else if (min <= 0.5) label = 'x1/2'
 
@@ -89,78 +74,89 @@ function aggregatePerTrainer(encounters: Encounter[], trainers: string[]) {
   return chart
 }
 
-/* ========== COMPONENT ===================================================== */
+/* ─────────────────────────────────────────────────────────────── */
 
 export default function TeamTab() {
   const { trainers, encounters, setEncounters } = useRun()
   const rows = encounters.filter(e => e.status === 'Team')
-
   const [editing, setEditing] =
     useState<{ id: string; idx: number } | null>(null)
 
   const patch = (id: string, fn: (e: Encounter) => Encounter) =>
     setEncounters(prev => prev.map(e => (e.id === id ? fn(e) : e)))
 
-  /* Aggregierte Schwächen / Resistenzen ----------------------------------- */
+  /* Schaden-Matrix vorberechnen */
   const trainerChart = aggregatePerTrainer(rows, trainers)
   const chartLabels: Label[] = ['x4', 'x2', 'x1/2', 'x1/4', 'x0']
 
-  /* ------------------------- RENDER -------------------------------------- */
+  /* Gemeinsames <colgroup> – gleiche Spaltenbreiten für beide Tabellen */
+  const COLS = (
+    <colgroup>
+      <col className="w-28" />
+      {trainers.map(() => (
+        <>
+          <col className="w-28" />
+          <col className="w-24" />
+        </>
+      ))}
+      <col className="w-32" />
+    </colgroup>
+  )
+
+  /* ─────────────── R E N D E R ───────────────────────────────── */
   return (
     <>
-      {/* 1) Damage-Chart */}
-      <table className="mb-6 w-full text-sm">
+      {/* 1) Schaden-Matrix */}
+      <table className="mb-6 w-full text-sm table-fixed">
+        {COLS}
         <tbody>
-          {chartLabels.map((lbl, rowIdx) => (
+          {chartLabels.map((lbl, idx) => (
             <tr
               key={lbl}
-              className={`h-10 ${
-                rowIdx ? 'border-t border-white/20' : ''}`}                                 
-              
+              className={`h-10 ${idx ? 'border-t border-white/20' : ''}`}
             >
-              {/* Label links */}
-              <td className="p-2 font-bold text-white whitespace-nowrap">{lbl}</td>
+              {/* Zeilenlabel */}
+              <td className="px-2 font-bold text-white whitespace-nowrap">
+                {lbl}
+              </td>
 
-              {/* pro Trainer zwei Spalten: ① Chart-Zelle ② Leer-Dummy */}
+              {/* pro Trainer: Chart-Zelle + Dummy */}
               {trainers.map(t => (
                 <>
-                  {/* ①  Chart-Zelle – linksbündig, Icons umbrechen */}
                   <td
                     key={`${lbl}-${t}`}
-                    className="p-1 w-24 align-top"
+                    className="p-1 align-top"
                   >
-                    <div className="grid grid-cols-2 gap-1">  {/* max 2 Icons pro Zeile */}
+                    <div className="grid grid-cols-2 gap-1 justify-items-start">
                       {trainerChart[t][lbl].map(ty => (
                         <TypeIcon key={ty} type={ty} />
                       ))}
                     </div>
                   </td>
-                  
-
-                  {/* ②  Dummy – gleicht die Typ-Spalte des Haupt-Tables aus */}
-                  <td key={`${lbl}-${t}-dummy`} className="p-1 w-24" />
+                  <td key={`${lbl}-${t}-dummy`} className="p-1" />
                 </>
               ))}
 
-              {/* leere Status-Spalte */}
-              <td className="p-2 w-32" />
+              {/* Status-Dummy */}
+              <td className="p-2" />
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* 2) Team-Tabelle (unverändert bis auf align-middle + Icons) */}
-      <table className="w-full text-sm">
+      {/* 2) Team-Tabelle */}
+      <table className="w-full text-sm table-fixed">
+        {COLS}
         <thead>
           <tr className="bg-gray-700 text-white">
             <th className="p-2">Herkunft</th>
             {trainers.map(t => (
               <>
                 <th key={t} className="p-2">{t}</th>
-                <th key={`${t}-typ`} className="p-2 w-24" />
+                <th key={`${t}-typ`} className="p-2" />
               </>
             ))}
-            <th className="p-2 w-32">Status</th>
+            <th className="p-2">Status</th>
           </tr>
         </thead>
 
@@ -168,14 +164,12 @@ export default function TeamTab() {
           {rows.map(enc => (
             <tr
               key={enc.id}
-              className={
-                [
-                  'border-t h-32',
-                  enc.status === 'Tod' && 'bg-gray-800/30 text-gray-400',
-                ]
-                  .filter(Boolean)
-                  .join(' ')
-              }
+              className={[
+                'border-t h-32',
+                enc.status === 'Tod' && 'bg-gray-800/30 text-gray-400',
+              ]
+                .filter(Boolean)
+                .join(' ')}
             >
               {/* Herkunft */}
               <td className="p-2 align-middle">
@@ -195,7 +189,7 @@ export default function TeamTab() {
 
                 return (
                   <>
-                    {/* Pokémon-Zelle */}
+                    {/* Slot */}
                     <td
                       key={`slot-${idx}`}
                       className="relative p-2 align-top text-center"
@@ -247,10 +241,10 @@ export default function TeamTab() {
                       )}
                     </td>
 
-                    {/* Typ-Zelle */}
+                    {/* Typen */}
                     <td
                       key={`type-${idx}`}
-                      className="p-2 w-24 text-center align-middle"
+                      className="p-2 text-center align-middle"
                     >
                       {types.map(t => (
                         <TypeIcon
@@ -265,7 +259,7 @@ export default function TeamTab() {
               })}
 
               {/* Status */}
-              <td className="p-2 w-32 align-middle">
+              <td className="p-2 align-middle">
                 <select
                   value={enc.status}
                   onChange={e =>
