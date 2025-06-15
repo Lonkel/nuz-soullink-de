@@ -24,6 +24,8 @@ const statusClasses = {
   Tod:  'bg-red-600',
 } as const
 
+
+
 /* ----- helpers ------------------------------------------------ */
 
 function aggregatePerTrainer(encounters: Encounter[], trainers: string[]) {
@@ -127,12 +129,13 @@ export default function TeamTab() {
                     key={`${lbl}-${t}`}
                     className="p-1 w-24 align-top"
                   >
-                    <div className="flex flex-wrap gap-1">  {/* max 2 Icons pro Zeile */}
+                    <div className="grid grid-cols-2 gap-1">  {/* max 2 Icons pro Zeile */}
                       {trainerChart[t][lbl].map(ty => (
                         <TypeIcon key={ty} type={ty} />
                       ))}
                     </div>
                   </td>
+                  
 
                   {/* ②  Dummy – gleicht die Typ-Spalte des Haupt-Tables aus */}
                   <td key={`${lbl}-${t}-dummy`} className="p-1 w-24" />
