@@ -141,10 +141,13 @@ export function RunProvider({
   /* ── 3. Mutations-Helper (schreibt immer zurück) ──────────── */
   const save = async (next: RunRow['data']) => {
     setRun(next)
-    await supabase
+     const { error } = await supabase
       .from('runs')
-      .update({ data: next })
-      .eq('id', runId)
+      .upsert(
+      { id: runId, data: next },
+      { onConflict: 'id' }
+    )
+    if (error) console.error('Supabase upsert failed', error)
   }
 
   const setEncounters: Setter<Encounter[]> = update =>
