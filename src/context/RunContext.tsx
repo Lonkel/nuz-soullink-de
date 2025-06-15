@@ -138,37 +138,71 @@ export function RunProvider({
     }
   }, [runId])
 
-  /* ── 3. Mutations-Helper (schreibt immer zurück) ──────────── */
-  const save = async (next: RunRow['data']) => {
-    setRun(next)
-     const { error } = await supabase
+  // ─── Supabase-Loader + Mutations  ────────────────────────────────
+useEffect(() => {
+  let cancelled = false
+
+  ;(async () => {
+    const { data: row, error } = await supabase
       .from('runs')
-      .upsert(
-      { id: runId, data: next },
-      { onConflict: 'id' }
-    )
-    if (error) console.error('Supabase upsert failed', error)
+      .select('data')
+      .eq('id', runId)
+      .single()
+
+    if (cancelled) return
+
+    if (row) {
+      /* bereits vorhanden → in den React-State */
+      setRun(row.data)
+    } else if (error?.code === 'PGRST116') {
+      /* Zeile fehlt → frische Default-Daten anlegen */
+      const fresh: RunRow['data'] = {
+        game:      initialGame,
+        trainers:  initialTrainers,
+        encounters: [],
+        team:       [],
+      }
+      await supabase.from('runs').insert({ id: runId, data: fresh })
+      setRun(fresh)
+    } else if (error) {
+      console.error('Loader error', error)
+    }
+  })()
+
+  return () => {
+    cancelled = true
   }
+}, [runId, initialGame, initialTrainers])
 
-  const setEncounters: Setter<Encounter[]> = update =>
-    setRun(cur => {
-      if (!cur) return cur
-      const nextList =
-        typeof update === 'function' ? update(cur.encounters) : update
-      const next = { ...cur, encounters: nextList }
-      save(next)
-      return next
-    })
+/* ─── Speichern: immer UPSERT, nie mehr 404 ───────────────────── */
+const save = async (next: RunRow['data']) => {
+  setRun(next)                                         // sofort UI updaten
+  const { error } = await supabase
+    .from('runs')
+    .upsert({ id: runId, data: next }, { onConflict: 'id' })
+  if (error) console.error('supabase upsert failed', error)
+}
 
-  const setTeam: Setter<Encounter[]> = update =>
-    setRun(cur => {
-      if (!cur) return cur
-      const nextList =
-        typeof update === 'function' ? update(cur.team) : update
-      const next = { ...cur, team: nextList }
-      save(next)
-      return next
-    })
+/* ─── Setter-Helfer ───────────────────────────────────────────── */
+const setEncounters: Setter<Encounter[]> = update =>
+  setRun(cur => {
+    if (!cur) return cur
+    const nextList =
+      typeof update === 'function' ? update(cur.encounters) : update
+    const next = { ...cur, encounters: nextList }
+    save(next)
+    return next
+  })
+
+const setTeam: Setter<Encounter[]> = update =>
+  setRun(cur => {
+    if (!cur) return cur
+    const nextList =
+      typeof update === 'function' ? update(cur.team) : update
+    const next = { ...cur, team: nextList }
+    save(next)
+    return next
+  })
 
   /* ── 4. Beim ersten Render ist run==null → Ladezustand ───── */
   if (!run) return null
