@@ -69,8 +69,8 @@ export default function TrainerTab({ trainer }: { trainer: string }) {
     <table className="w-full text-sm table-fixed">
       <colgroup>
         <col className="w-32" /> {/* Pokémon */}
-        {labels.map(() => (
-          <col className="w-28" />
+        {labels.map(lbl => (
+          <col key={lbl} className="w-28" />
         ))}
       </colgroup>
 
