@@ -134,8 +134,7 @@ export default function TeamsTab() {
                 return (
                   <tr
                     key={`${row.id}-${row.idx}`}
-                    className="border-b-2 border-white/20
-                               divide-x divide-white/20"
+                    className="border-b border-white/20"
                    >
                     {/* Sprite */}
                     <td className="p-2 flex justify-center">
@@ -143,7 +142,7 @@ export default function TeamsTab() {
                         src={sprite(row.name)}
                         alt={row.name}
                         title={row.name}
-                        className="h-14"
+                        className="h-24"
                       />
                     </td>
 
@@ -155,7 +154,7 @@ export default function TeamsTab() {
                           src={sprite(p)}
                           alt={p}
                           title={p}
-                          className="h-8 absolute bottom-1 right-1"
+                          className="h-12 absolute bottom-1 right-1"
                           style={{ right: `${i * 2}rem` }}
                         />
                       ))}
