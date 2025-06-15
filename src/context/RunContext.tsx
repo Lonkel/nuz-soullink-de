@@ -1,10 +1,8 @@
 /* ──────────────────────────────────────────────────────────────
-   RunContext  –  Supabase-synchrone zentrale Datenquelle
-   • keine LocalStorage-Persistenz mehr
-   • alle Browser sehen dieselben Daten in Echtzeit
-   • Tabelle  runs(id uuid  PK, data jsonb, updated_at timestamptz)
-   • RLS: allow anon  select, insert, update  on table runs
-   • Realtime in Supabase-Dashboard für runs aktivieren
+   RunContext  –  zentrale Datenquelle, Supabase-synchron
+   • Tabelle runs(id uuid PK, data jsonb, updated_at timestamptz)
+   • RLS: SELECT, INSERT, UPDATE für role public erlaubt
+   • Realtime-Broadcast in Supabase aktiviert
    ────────────────────────────────────────────────────────────── */
 import {
   createContext,
@@ -17,7 +15,7 @@ import {
 } from 'react'
 import { supabase } from '@/lib/db'
 
-/* ╭─ Types ────────────────────────────────────────────────────╮ */
+/* ╭─ Typen ────────────────────────────────────────────────────╮ */
 export type Status = 'Team' | 'Box' | 'Tod'
 
 export interface Slot {
@@ -45,12 +43,11 @@ export interface RunState {
 }
 /* ╰─────────────────────────────────────────────────────────────╯ */
 
-const RunContext = createContext<RunState | undefined>(undefined)
+export const RunContext = createContext<RunState | undefined>(undefined)
 
 export const useRun = () => {
   const ctx = useContext(RunContext)
-  if (!ctx)
-    throw new Error('useRun must be used inside <RunProvider>')
+  if (!ctx) throw new Error('useRun must be used inside <RunProvider>')
   return ctx
 }
 
@@ -80,41 +77,37 @@ export function RunProvider({
 }: RunProviderProps) {
   const [run, setRun] = useState<RunRow['data'] | null>(null)
 
-  /* ── 1. Initial laden (oder anlegen) ─────────────────────── */
+  /* 1 ─ Initial laden ODER Default-Row anlegen */
   useEffect(() => {
-    let cancelled = false
-
-    async function load() {
-      const { data, error } = await supabase
+    ;(async () => {
+      const { data: row, status, error } = await supabase
         .from('runs')
         .select('data')
         .eq('id', runId)
-        .single<RunRow>()
+        .maybeSingle<RunRow>()
 
-      if (error && error.code !== 'PGRST116') console.error(error)
-
-      if (!cancelled) {
-        if (data) {
-          setRun(data.data)
-        } else {
-          const fresh = {
-            game: initialGame,
-            trainers: initialTrainers,
-            encounters: [],
-            team: [],
-          }
-          await supabase.from('runs').insert({ id: runId, data: fresh })
-          setRun(fresh)
-        }
+      if (row) {
+        setRun(row.data)
+        return
       }
-    }
-    load()
-    return () => {
-      cancelled = true
-    }
+
+      if (status === 200 || status === 406) {
+        const fresh: RunRow['data'] = {
+          game: initialGame,
+          trainers: initialTrainers,
+          encounters: [],
+          team: [],
+        }
+        await supabase.from('runs').insert({ id: runId, data: fresh })
+        setRun(fresh)
+        return
+      }
+
+      if (error) console.error('Loader error', error)
+    })()
   }, [runId, initialGame, initialTrainers])
 
-  /* ── 2. Realtime-Subscription ─────────────────────────────── */
+  /* 2 ─ Realtime-Subscription */
   useEffect(() => {
     const channel = supabase
       .channel('run-' + runId)
@@ -126,10 +119,7 @@ export function RunProvider({
           table: 'runs',
           filter: `id=eq.${runId}`,
         },
-        payload => {
-          // andere Clients haben aktualisiert → State übernehmen
-          setRun(payload.new.data as RunRow['data'])
-        },
+        payload => setRun((payload.new as RunRow).data),
       )
       .subscribe()
 
@@ -138,72 +128,37 @@ export function RunProvider({
     }
   }, [runId])
 
-  // ─── Supabase-Loader + Mutations  ────────────────────────────────
-useEffect(() => {
-  let cancelled = false
-
-  ;(async () => {
-    const { data: row, error, status } = await supabase
+  /* 3 ─ Speichern (UPSERT) */
+  const save = async (next: RunRow['data']) => {
+    setRun(next)
+    const { error } = await supabase
       .from('runs')
-      .select('data')
-      .eq('id', runId)
-      .maybeSingle()
-
-    
-    if (row) {
-      /* bereits vorhanden → in den React-State */
-      setRun(row.data)          // Row existiert
-    } else if (status === 406 || status === 200) {
-      // noch keine Zeile → Default anlegen
-     const fresh = {
-       game: initialGame,
-       trainers: initialTrainers,
-       encounters: [],
-       team: [],
-     }
-     await supabase.from('runs').insert({ id: runId, data: fresh })
-     setRun(fresh)
-    } else if (error) {
-      console.error(error)
-    }
-  })()
-
-  return () => {
-    cancelled = true
+      .upsert({ id: runId, data: next }, { onConflict: 'id' })
+    if (error) console.error('supabase upsert failed', error)
   }
-}, [runId, initialGame, initialTrainers])
 
-/* ─── Speichern: immer UPSERT, nie mehr 404 ───────────────────── */
-const save = async (next: RunRow['data']) => {
-  setRun(next)                                         // sofort UI updaten
-  const { error } = await supabase
-    .from('runs')
-    .upsert({ id: runId, data: next }, { onConflict: 'id' })
-  if (error) console.error('supabase upsert failed', error)
-}
+  /* 4 ─ Setter-Helfer */
+  const setEncounters: Setter<Encounter[]> = update =>
+    setRun(cur => {
+      if (!cur) return cur
+      const nextList =
+        typeof update === 'function' ? update(cur.encounters) : update
+      const next = { ...cur, encounters: nextList }
+      save(next)
+      return next
+    })
 
-/* ─── Setter-Helfer ───────────────────────────────────────────── */
-const setEncounters: Setter<Encounter[]> = update =>
-  setRun(cur => {
-    if (!cur) return cur
-    const nextList =
-      typeof update === 'function' ? update(cur.encounters) : update
-    const next = { ...cur, encounters: nextList }
-    save(next)
-    return next
-  })
+  const setTeam: Setter<Encounter[]> = update =>
+    setRun(cur => {
+      if (!cur) return cur
+      const nextList =
+        typeof update === 'function' ? update(cur.team) : update
+      const next = { ...cur, team: nextList }
+      save(next)
+      return next
+    })
 
-const setTeam: Setter<Encounter[]> = update =>
-  setRun(cur => {
-    if (!cur) return cur
-    const nextList =
-      typeof update === 'function' ? update(cur.team) : update
-    const next = { ...cur, team: nextList }
-    save(next)
-    return next
-  })
-
-  /* ── 4. Beim ersten Render ist run==null → Ladezustand ───── */
+  /* 5 ─ Ladezustand */
   if (!run) return null
 
   const value: RunState = {
@@ -221,4 +176,4 @@ const setTeam: Setter<Encounter[]> = update =>
     </RunContext.Provider>
   )
 }
-/* ╰────────────────────────────────────────────────────────────╯ */
+/* ╰─────────────────────────────────────────────────────────────╯ */
