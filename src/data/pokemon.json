@@ -80,7 +80,7 @@
     "de": "Raupy",
     "en": "Caterpie",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -88,7 +88,7 @@
     "de": "Safcon",
     "en": "Metapod",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -96,7 +96,7 @@
     "de": "Smettbo",
     "en": "Butterfree",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -105,7 +105,7 @@
     "de": "Hornliu",
     "en": "Weedle",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -114,7 +114,7 @@
     "de": "Kokuna",
     "en": "Kakuna",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -123,7 +123,7 @@
     "de": "Bibor",
     "en": "Beedrill",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -386,7 +386,7 @@
     "de": "Paras",
     "en": "Paras",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Pflanze"
     ]
   },
@@ -395,7 +395,7 @@
     "de": "Parasek",
     "en": "Parasect",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Pflanze"
     ]
   },
@@ -404,7 +404,7 @@
     "de": "Bluzuk",
     "en": "Venonat",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -413,7 +413,7 @@
     "de": "Omot",
     "en": "Venomoth",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -1034,7 +1034,7 @@
     "de": "Sichlor",
     "en": "Scyther",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -1068,7 +1068,7 @@
     "de": "Pinsir",
     "en": "Pinsir",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -1385,7 +1385,7 @@
     "de": "Ledyba",
     "en": "Ledyba",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -1394,7 +1394,7 @@
     "de": "Ledian",
     "en": "Ledian",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -1403,7 +1403,7 @@
     "de": "Webarak",
     "en": "Spinarak",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -1412,7 +1412,7 @@
     "de": "Ariados",
     "en": "Ariados",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -1625,7 +1625,7 @@
     "de": "Yanma",
     "en": "Yanma",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -1719,7 +1719,7 @@
     "de": "Tannza",
     "en": "Pineco",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -1727,7 +1727,7 @@
     "de": "Forstellka",
     "en": "Forretress",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Stahl"
     ]
   },
@@ -1787,7 +1787,7 @@
     "de": "Scherox",
     "en": "Scizor",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Stahl"
     ]
   },
@@ -1796,7 +1796,7 @@
     "de": "Pottrott",
     "en": "Shuckle",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gestein"
     ]
   },
@@ -1805,7 +1805,7 @@
     "de": "Skaraborn",
     "en": "Heracross",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Kampf"
     ]
   },
@@ -2236,7 +2236,7 @@
     "de": "Waumpel",
     "en": "Wurmple",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -2244,7 +2244,7 @@
     "de": "Schaloko",
     "en": "Silcoon",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -2252,7 +2252,7 @@
     "de": "Papinella",
     "en": "Beautifly",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -2261,7 +2261,7 @@
     "de": "Panekon",
     "en": "Cascoon",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -2269,7 +2269,7 @@
     "de": "Pudox",
     "en": "Dustox",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -2394,7 +2394,7 @@
     "de": "Gehweiher",
     "en": "Surskit",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Wasser"
     ]
   },
@@ -2403,7 +2403,7 @@
     "de": "Maskeregen",
     "en": "Masquerain",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -2453,7 +2453,7 @@
     "de": "Nincada",
     "en": "Nincada",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Boden"
     ]
   },
@@ -2462,7 +2462,7 @@
     "de": "Ninjask",
     "en": "Ninjask",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -2471,7 +2471,7 @@
     "de": "Ninjatom",
     "en": "Shedinja",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Geist"
     ]
   },
@@ -2648,7 +2648,7 @@
     "de": "Volbeat",
     "en": "Volbeat",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -2656,7 +2656,7 @@
     "de": "Illumise",
     "en": "Illumise",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -2940,7 +2940,7 @@
     "en": "Anorith",
     "types": [
       "Gestein",
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -2949,7 +2949,7 @@
     "en": "Armaldo",
     "types": [
       "Gestein",
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -3394,7 +3394,7 @@
     "de": "Zirpurze",
     "en": "Kricketot",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -3402,7 +3402,7 @@
     "de": "Zirpeise",
     "en": "Kricketune",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -3486,7 +3486,7 @@
     "de": "Burmy",
     "en": "Burmy",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -3494,7 +3494,7 @@
     "de": "Burmadame",
     "en": "Wormadam",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Pflanze"
     ]
   },
@@ -3503,7 +3503,7 @@
     "de": "Moterpel",
     "en": "Mothim",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -3512,7 +3512,7 @@
     "de": "Wadribie",
     "en": "Combee",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -3521,7 +3521,7 @@
     "de": "Honweisel",
     "en": "Vespiquen",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -3818,7 +3818,7 @@
     "en": "Skorupi",
     "types": [
       "Gift",
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -3972,7 +3972,7 @@
     "de": "Yanmega",
     "en": "Yanmega",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -4562,7 +4562,7 @@
     "de": "Strawickl",
     "en": "Sewaddle",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Pflanze"
     ]
   },
@@ -4571,7 +4571,7 @@
     "de": "Folikon",
     "en": "Swadloon",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Pflanze"
     ]
   },
@@ -4580,7 +4580,7 @@
     "de": "Matrifol",
     "en": "Leavanny",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Pflanze"
     ]
   },
@@ -4589,7 +4589,7 @@
     "de": "Toxiped",
     "en": "Venipede",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -4598,7 +4598,7 @@
     "de": "Rollum",
     "en": "Whirlipede",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -4607,7 +4607,7 @@
     "de": "Cerapendra",
     "en": "Scolipede",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gift"
     ]
   },
@@ -4709,7 +4709,7 @@
     "de": "Lithomith",
     "en": "Dwebble",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gestein"
     ]
   },
@@ -4718,7 +4718,7 @@
     "de": "Castellith",
     "en": "Crustle",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gestein"
     ]
   },
@@ -4971,7 +4971,7 @@
     "de": "Laukaps",
     "en": "Karrablast",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -4979,7 +4979,7 @@
     "de": "Cavalanzas",
     "en": "Escavalier",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Stahl"
     ]
   },
@@ -5032,7 +5032,7 @@
     "de": "Wattzapf",
     "en": "Joltik",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Elektro"
     ]
   },
@@ -5041,7 +5041,7 @@
     "de": "Voltula",
     "en": "Galvantula",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Elektro"
     ]
   },
@@ -5207,7 +5207,7 @@
     "de": "Schnuthelm",
     "en": "Shelmet",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -5215,7 +5215,7 @@
     "de": "Hydragil",
     "en": "Accelgor",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -5344,7 +5344,7 @@
     "de": "Fermicula",
     "en": "Durant",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Stahl"
     ]
   },
@@ -5380,7 +5380,7 @@
     "de": "Ignivor",
     "en": "Larvesta",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Feuer"
     ]
   },
@@ -5389,7 +5389,7 @@
     "de": "Ramoth",
     "en": "Volcarona",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Feuer"
     ]
   },
@@ -5496,7 +5496,7 @@
     "de": "Genesect",
     "en": "Genesect",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Stahl"
     ]
   },
@@ -5624,7 +5624,7 @@
     "de": "Purmel",
     "en": "Scatterbug",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -5632,7 +5632,7 @@
     "de": "Puponcho",
     "en": "Spewpa",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -5640,7 +5640,7 @@
     "de": "Vivillon",
     "en": "Vivillon",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Flug"
     ]
   },
@@ -6242,7 +6242,7 @@
     "de": "Mabula",
     "en": "Grubbin",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -6250,7 +6250,7 @@
     "de": "Akkup",
     "en": "Charjabug",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Elektro"
     ]
   },
@@ -6259,7 +6259,7 @@
     "de": "Donarion",
     "en": "Vikavolt",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Elektro"
     ]
   },
@@ -6294,7 +6294,7 @@
     "de": "Wommel",
     "en": "Cutiefly",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Fee"
     ]
   },
@@ -6303,7 +6303,7 @@
     "de": "Bandelby",
     "en": "Ribombee",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Fee"
     ]
   },
@@ -6371,7 +6371,7 @@
     "en": "Dewpider",
     "types": [
       "Wasser",
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -6380,7 +6380,7 @@
     "en": "Araquanid",
     "types": [
       "Wasser",
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -6507,7 +6507,7 @@
     "de": "Reißlaus",
     "en": "Wimpod",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Wasser"
     ]
   },
@@ -6516,7 +6516,7 @@
     "de": "Tectass",
     "en": "Golisopod",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Wasser"
     ]
   },
@@ -6743,7 +6743,7 @@
     "de": "Masskito",
     "en": "Buzzwole",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Kampf"
     ]
   },
@@ -6752,7 +6752,7 @@
     "de": "Schabelle",
     "en": "Pheromosa",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Kampf"
     ]
   },
@@ -6994,7 +6994,7 @@
     "de": "Sensect",
     "en": "Blipbug",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -7002,7 +7002,7 @@
     "de": "Keradar",
     "en": "Dottler",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Psycho"
     ]
   },
@@ -7011,7 +7011,7 @@
     "de": "Maritellit",
     "en": "Orbeetle",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Psycho"
     ]
   },
@@ -7214,7 +7214,7 @@
     "en": "Sizzlipede",
     "types": [
       "Feuer",
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -7223,7 +7223,7 @@
     "en": "Centiskorch",
     "types": [
       "Feuer",
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -7399,7 +7399,7 @@
     "en": "Snom",
     "types": [
       "Eis",
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -7408,7 +7408,7 @@
     "en": "Frosmoth",
     "types": [
       "Eis",
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -7639,7 +7639,7 @@
     "de": "Axantor",
     "en": "Kleavor",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Gestein"
     ]
   },
@@ -7784,7 +7784,7 @@
     "de": "Tarundel",
     "en": "Tarountula",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -7792,7 +7792,7 @@
     "de": "Spinsidias",
     "en": "Spidops",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -7800,7 +7800,7 @@
     "de": "Micrick",
     "en": "Nymble",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -7808,7 +7808,7 @@
     "de": "Lextremo",
     "en": "Lokix",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Unlicht"
     ]
   },
@@ -8090,7 +8090,7 @@
     "de": "Relluk",
     "en": "Rellor",
     "types": [
-      "Käfer"
+      "Kaefer"
     ]
   },
   {
@@ -8098,7 +8098,7 @@
     "de": "Skarabaks",
     "en": "Rabsca",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Psycho"
     ]
   },
@@ -8391,7 +8391,7 @@
     "de": "Kriechflügel",
     "en": "Slither Wing",
     "types": [
-      "Käfer",
+      "Kaefer",
       "Kampf"
     ]
   },
