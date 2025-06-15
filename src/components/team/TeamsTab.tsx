@@ -87,7 +87,7 @@ export default function TeamsTab() {
         return (
           <table
             key={trainer}
-            className="w-full text-sm table-fixed border-collapse border border-white/20"
+            className="w-full text-sm table-fixed border-collapse border border-white/30"
           >
             <colgroup>
               <col className="w-32" />
@@ -99,7 +99,7 @@ export default function TeamsTab() {
             </colgroup>
 
             <thead>
-              <tr className="bg-gray-700 text-white border-b border-white/20">
+              <tr className="bg-gray-700 text-white border-b-2 border-white/30, divide-x-2 divide-white/30">
                 <th className="p-2 text-left">{trainer}</th>
                 <th className="p-2">Typ</th>
                 <th className="p-2">x4</th>
@@ -116,7 +116,7 @@ export default function TeamsTab() {
                 const types = pokemonTypes(row.name)
 
                 return (
-                  <tr key={`${row.id}-${row.idx}`} className="border-b border-white/20">
+                  <tr key={`${row.id}-${row.idx}`} className="border-b-2 border-white/30, divide-x-2 divide-white/30">
                     {/* Pokémon + Sprite */}
                     <td className="p-2 flex items-center gap-2">
                       <img src={sprite(row.name)} alt={row.name} className="h-14" />
