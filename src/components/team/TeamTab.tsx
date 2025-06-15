@@ -101,7 +101,7 @@ export default function TeamTab() {
 
   /* Aggregierte Schwächen / Resistenzen ----------------------------------- */
   const trainerChart = aggregatePerTrainer(rows, trainers)
-  const chartLabels: Label[] = ['x4', 'x2', 'x1', 'x1/2', 'x1/4', 'x0']
+  const chartLabels: Label[] = ['x4', 'x2', 'x1/2', 'x1/4', 'x0']
 
   /* ------------------------- RENDER -------------------------------------- */
   return (
@@ -109,26 +109,37 @@ export default function TeamTab() {
       {/* 1) Damage-Chart */}
       <table className="mb-6 w-full text-sm">
         <tbody>
-          {chartLabels.map(lbl => (
-            <tr key={lbl} className="h-8">
-              {/* Label-Spalte */}
-              <td className="p-2 font-bold text-white">{lbl}</td>
+          {chartLabels.map((lbl, rowIdx) => (
+            <tr
+              key={lbl}
+              className={`h-10 ${
+                rowIdx ? 'border-t border-white/20' : ''}`}                                 
+              
+            >
+              {/* Label links */}
+              <td className="p-2 font-bold text-white whitespace-nowrap">{lbl}</td>
 
-              {/* pro Trainer:  Pokémon-Slot-Spalte + Chart-Spalte */}
+              {/* pro Trainer zwei Spalten: ① Chart-Zelle ② Leer-Dummy */}
               {trainers.map(t => (
                 <>
-                  {/* leerer Dummy: gleicht die echte Pokémon-Spalte aus */}
-                  <td key={`${lbl}-${t}-dummy`} className="p-2" />
-                  {/* Chart-Zelle */}
-                  <td key={`${lbl}-${t}`} className="p-1 w-24 text-center">
-                    {trainerChart[t][lbl].map(ty => (
-                      <TypeIcon key={ty} type={ty} />
-                    ))}
+                  {/* ①  Chart-Zelle – linksbündig, Icons umbrechen */}
+                  <td
+                    key={`${lbl}-${t}`}
+                    className="p-1 w-24 align-top"
+                  >
+                    <div className="flex flex-wrap gap-1">  {/* max 2 Icons pro Zeile */}
+                      {trainerChart[t][lbl].map(ty => (
+                        <TypeIcon key={ty} type={ty} />
+                      ))}
+                    </div>
                   </td>
+
+                  {/* ②  Dummy – gleicht die Typ-Spalte des Haupt-Tables aus */}
+                  <td key={`${lbl}-${t}-dummy`} className="p-1 w-24" />
                 </>
               ))}
 
-              {/* leere Status-Spalte, damit Breite stimmt */}
+              {/* leere Status-Spalte */}
               <td className="p-2 w-32" />
             </tr>
           ))}
