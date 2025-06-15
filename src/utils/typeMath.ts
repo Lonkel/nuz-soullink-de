@@ -51,3 +51,5 @@ export function aggregateTeam(encounters: Encounter[]) {
 
   return agg
 }
+
+export { TYPE_CHART } from '@/data/typeChart'

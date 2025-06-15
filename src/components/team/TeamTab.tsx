@@ -1,25 +1,94 @@
 // ───────────────────────────────────────────────────────────────
-// src/components/team/TeamTab.tsx
-// 1. Oberhalb: 6-Zeilen-“Chart” (x4 … x0) ohne Kopfzeile, exakt
-//    dieselbe Spaltenbreite wie die eigentliche Team-Tabelle.
-// 2. Darunter: Team-Tabelle (nur Reihen mit Status "Team")
+// TeamTab  –  shows   1) damage-chart   2) team table
 // ───────────────────────────────────────────────────────────────
 import { useState } from 'react'
 import { Pencil } from 'lucide-react'
-import TypeIcon from '@/components/ui/TypeIcon'
 
 import { useRun, Status } from '@/context/RunContext'
 import type { Encounter } from '@/context/RunContext'
-import PokemonSelect      from '@/components/ui/PokemonSelect'
-import LocationSelect     from '@/components/ui/LocationSelect'
-import { sprite }         from '@/utils/sprites'
-import { pokemonTypes }   from '@/utils/pokemonTypes'
+
+import PokemonSelect  from '@/components/ui/PokemonSelect'
+import LocationSelect from '@/components/ui/LocationSelect'
+import TypeIcon       from '@/components/ui/TypeIcon'
+import { sprite }     from '@/utils/sprites'
+import { pokemonTypes } from '@/utils/pokemonTypes'
+import {
+  TYPE_CHART,
+  labelToNumber,
+  Multiplier,
+  Label,
+} from '@/utils/typeMath'
 
 const statusClasses = {
   Team: 'bg-green-600',
   Box:  'bg-yellow-500',
   Tod:  'bg-red-600',
 } as const
+
+/* ----- helpers ------------------------------------------------ */
+
+function aggregatePerTrainer(encounters: Encounter[], trainers: string[]) {
+  /* sammle alle Pokémon pro Trainer */
+  const mons: Record<string, string[]> = Object.fromEntries(
+    trainers.map(t => [t, [] as string[]]),
+  )
+  encounters
+    .filter(e => e.status === 'Team')
+    .forEach(e =>
+      e.slots.forEach(s => {
+        if (s.name) mons[s.trainer].push(s.name)
+      }),
+    )
+
+  /* berechne min / max & ordne jedem Typ eine Zeile (Label) zu */
+  const chart: Record<
+    string,               // trainer
+    Record<Label, string[]> // label ➜ list attacker types
+  > = {}
+  trainers.forEach(t => {
+    const pokeNames = mons[t]
+    const map: Record<Label, string[]> = {
+      'x4': [],
+      'x2': [],
+      'x1': [],
+      'x1/2': [],
+      'x1/4': [],
+      'x0': [],
+    }
+
+    Object.keys(TYPE_CHART).forEach(att => {
+      /* min & max Effektivität über ALLE Pokémon dieses Trainers */
+      let min: Multiplier = 4
+      let max: Multiplier = 0
+      pokeNames.forEach(pn => {
+        const defs = pokemonTypes(pn).map(x => x.toLowerCase())
+        const m1 =
+          TYPE_CHART[att]?.[defs[0]] ?? 1
+        const m2 =
+          defs[1] ? TYPE_CHART[att]?.[defs[1]] ?? 1 : 1
+        const m = (m1 * m2) as Multiplier
+        min = Math.min(min, m) as Multiplier
+        max = Math.max(max, m) as Multiplier
+      })
+
+      /* Zu welcher Zeile gehört der Angreifer-Typ? */
+      let label: Label = 'x1'
+      if (max >= 4) label = 'x4'
+      else if (max >= 2) label = 'x2'
+      else if (min <= 0) label = 'x0'
+      else if (min <= 0.25) label = 'x1/4'
+      else if (min <= 0.5) label = 'x1/2'
+
+      map[label].push(att)
+    })
+
+    chart[t] = map
+  })
+
+  return chart
+}
+
+/* ========== COMPONENT ===================================================== */
 
 export default function TeamTab() {
   const { trainers, encounters, setEncounters } = useRun()
@@ -31,44 +100,51 @@ export default function TeamTab() {
   const patch = (id: string, fn: (e: Encounter) => Encounter) =>
     setEncounters(prev => prev.map(e => (e.id === id ? fn(e) : e)))
 
-  /* ───────── 1. CHART ───────── */
-  const chartLabels = ['x4', 'x2', 'x1/2', 'x1/4', 'x0'] as const
+  /* Aggregierte Schwächen / Resistenzen ----------------------------------- */
+  const trainerChart = aggregatePerTrainer(rows, trainers)
+  const chartLabels: Label[] = ['x4', 'x2', 'x1', 'x1/2', 'x1/4', 'x0']
 
-  /* ───────── JSX ───────── */
+  /* ------------------------- RENDER -------------------------------------- */
   return (
     <>
-      {/* Damage-Chart */}
+      {/* 1) Damage-Chart */}
       <table className="mb-6 w-full text-sm">
         <tbody>
           {chartLabels.map(lbl => (
             <tr key={lbl} className="h-8">
-              {/* Herkunft-Spalte → Label */}
+              {/* Label-Spalte */}
               <td className="p-2 font-bold text-white">{lbl}</td>
 
-              {/* pro Trainer: Slot + Typ-Spalte */}
+              {/* pro Trainer:  Pokémon-Slot-Spalte + Chart-Spalte */}
               {trainers.map(t => (
                 <>
-                  <td key={`${lbl}-${t}`} className="p-2 bg-gray-800/40" />
-                  <td key={`${lbl}-${t}-typ`} className="p-2 bg-gray-800/40" />
+                  {/* leerer Dummy: gleicht die echte Pokémon-Spalte aus */}
+                  <td key={`${lbl}-${t}-dummy`} className="p-2" />
+                  {/* Chart-Zelle */}
+                  <td key={`${lbl}-${t}`} className="p-1 w-24 text-center">
+                    {trainerChart[t][lbl].map(ty => (
+                      <TypeIcon key={ty} type={ty} />
+                    ))}
+                  </td>
                 </>
               ))}
 
-              {/* Status-Spalte bleibt leer, damit Ausrichtung passt */}
-              <td className="p-2 w-32 bg-gray-800/40" />
+              {/* leere Status-Spalte, damit Breite stimmt */}
+              <td className="p-2 w-32" />
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* Eigentliche Team-Tabelle */}
-      <table className="w-full text-sm table-fixed">
+      {/* 2) Team-Tabelle (unverändert bis auf align-middle + Icons) */}
+      <table className="w-full text-sm">
         <thead>
           <tr className="bg-gray-700 text-white">
             <th className="p-2">Herkunft</th>
             {trainers.map(t => (
               <>
                 <th key={t} className="p-2">{t}</th>
-                <th key={`${t}-typ`} className="p-2 w-20" />   {/* leer */}
+                <th key={`${t}-typ`} className="p-2 w-24" />
               </>
             ))}
             <th className="p-2 w-32">Status</th>
@@ -77,7 +153,17 @@ export default function TeamTab() {
 
         <tbody>
           {rows.map(enc => (
-            <tr key={enc.id} className="border-t h-32 align-middle">
+            <tr
+              key={enc.id}
+              className={
+                [
+                  'border-t h-32',
+                  enc.status === 'Tod' && 'bg-gray-800/30 text-gray-400',
+                ]
+                  .filter(Boolean)
+                  .join(' ')
+              }
+            >
               {/* Herkunft */}
               <td className="p-2 align-middle">
                 <LocationSelect
@@ -88,7 +174,7 @@ export default function TeamTab() {
                 />
               </td>
 
-              {/* Slots + Typzellen */}
+              {/* Pokémon-Slots + Typen */}
               {enc.slots.map((slot, idx) => {
                 const isEditing =
                   editing?.id === enc.id && editing.idx === idx
@@ -96,8 +182,11 @@ export default function TeamTab() {
 
                 return (
                   <>
-                    {/* Pokémon-Slot */}
-                    <td key={`slot-${idx}`} className="relative p-2 align-top text-center">
+                    {/* Pokémon-Zelle */}
+                    <td
+                      key={`slot-${idx}`}
+                      className="relative p-2 align-top text-center"
+                    >
                       {isEditing && (
                         <PokemonSelect
                           onSelect={poke => {
@@ -115,12 +204,14 @@ export default function TeamTab() {
                       {slot.name && !isEditing && (
                         <button
                           onClick={() => setEditing({ id: enc.id, idx })}
-                          className="group mx-auto relative h-12"
+                          className="group mx-auto relative h-24"
                         >
                           <img
                             src={sprite(slot.name)}
                             alt={slot.name}
-                            className="h-24 mx-auto"
+                            className={`h-24 mx-auto ${
+                              enc.status === 'Tod' ? 'grayscale' : ''
+                            }`}
                           />
                           <Pencil
                             size={18}
@@ -144,21 +235,29 @@ export default function TeamTab() {
                     </td>
 
                     {/* Typ-Zelle */}
-                    <td key={`type-${idx}`} className="p-2 text-center">
-                      {types.map(t => <TypeIcon key={t} type={t} />)
-}
+                    <td
+                      key={`type-${idx}`}
+                      className="p-2 w-24 text-center align-middle"
+                    >
+                      {types.map(t => (
+                        <TypeIcon
+                          key={t}
+                          type={t}
+                          className={enc.status === 'Tod' ? 'grayscale' : ''}
+                        />
+                      ))}
                     </td>
                   </>
                 )
               })}
 
-              {/* Status (Team/Box/Tod) */}
-              <td className="p-2 w-32">
+              {/* Status */}
+              <td className="p-2 w-32 align-middle">
                 <select
                   value={enc.status}
                   onChange={e =>
-                    patch(enc.id, old => ({
-                      ...old,
+                    patch(enc.id, o => ({
+                      ...o,
                       status: e.target.value as Status,
                     }))
                   }
