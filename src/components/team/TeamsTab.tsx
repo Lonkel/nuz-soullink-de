@@ -157,7 +157,7 @@ export default function TeamsTab() {
                           alt={p}
                           title={p}
                           className="h-8 absolute bottom-1 right-1"
-                          style={{ right: `${i * 2rem}px` }}
+                          style={{ right: `${i * 2}rem` }}
                         />
                       ))}
                     </td>
