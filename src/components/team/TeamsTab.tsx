@@ -151,7 +151,7 @@ export default function TeamsTab() {
 
                       {/* Typen */}
                       <td className="p-2">
-                        <TypeGrid types={pokemonTypes(row.name)} />
+                        <TypeGrid types={types} />
                       </td>
 
                       {/* Stärken/Schwächen */}
