@@ -7,7 +7,7 @@ import EncountersTab from '@/components/encounters/EncountersTab'
 import TeamTab       from '@/components/team/TeamsTab'
 import BoxTab        from '@/components/box/BoxTab'
 import GraveTab      from '@/components/graveyard/GraveTab'
-
+import PokemonHeader from '@/components/ui/PokemonHeader'
 import { useRun }    from '@/context/RunContext'
 
 const tabs = ['Begegnungen', 'Team', 'Box', 'Friedhof'] as const
@@ -36,6 +36,9 @@ export default function Layout() {
                px-4 py-4 text-2xl font-bold text-white">
         Soullink&nbsp;–&nbsp;Pokémon&nbsp;{fullTitle}
       </h1>
+
+        {/* ── Neues Pokémon-Panel ── */}
+        <PokemonHeader />
 
         <Tab.Group>
          {/* klebt direkt unter der Überschrift (4 rem = 64 px) */}
