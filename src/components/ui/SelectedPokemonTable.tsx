@@ -1,8 +1,9 @@
-import TypeGrid              from '@/components/TypeGrid'
-import { sprite }             from '@/utils/sprites'
-import { pokemonTypes }       from '@/utils/pokemonTypes'
-import { damageMultipliers }  from '@/utils/pokemonTypes'
+import TypeGrid             from '@/components/TypeGrid'
+import { sprite }            from '@/utils/sprites'
+import { pokemonTypes }      from '@/utils/pokemonTypes'
+import { damageMultipliers } from '@/utils/pokemonTypes'
 
+/* exakte Spaltenreihenfolge wie in TeamsTab */
 const bucketKeys = ['x4', 'x2', 'x0.5', 'x0.25', 'x0'] as const
 type BucketKey = typeof bucketKeys[number]
 
@@ -13,26 +14,34 @@ export default function SelectedPokemonTable({
   name: string
   onDelete: () => void
 }) {
-  const types    = pokemonTypes(name)
-  const buckets  = damageMultipliers(name) as Record<BucketKey, string[]>
+  const types   = pokemonTypes(name)
+  const buckets = damageMultipliers(name) as Record<BucketKey, string[]>
 
   return (
-    <table className="mt-2 table-fixed border-collapse border-2 border-white/20 text-sm">
+    <table
+      className="w-full text-sm table-fixed border-collapse
+                 border-2 border-white/20"
+    >
+      {/* ‑- gleiche Breiten wie TeamsTab ‑- */}
       <colgroup>
-        <col className="w-20" />
-        <col className="w-24" />
+        <col className="w-20" />  {/* Sprite */}
+        <col className="w-16" />  {/* Partner-Sprite (leer) */}
+        <col className="w-24" />  {/* Typen */}
         {bucketKeys.map(k => (
-          <col key={k} className="w-24" />
+          <col key={k} className="w-28" />
         ))}
-        <col className="w-12" />
+        <col className="w-24" />  {/* Löschen-Button */}
       </colgroup>
 
       <tbody>
         <tr className="divide-x divide-white/20">
           {/* Sprite */}
-          <td className="p-2">
-            <img src={sprite(name)} alt={name} className="h-16" />
+          <td className="p-2 flex justify-center">
+            <img src={sprite(name)} alt={name} className="h-20" />
           </td>
+
+          {/* Partner-Sprite-Spalte bleibt leer */}
+          <td />
 
           {/* Typen */}
           <td className="p-2">
@@ -50,7 +59,7 @@ export default function SelectedPokemonTable({
           <td className="p-2 text-center">
             <button
               onClick={onDelete}
-              className="px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+              className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
               title="Pokémon entfernen"
             >
               ✕
