@@ -16,11 +16,11 @@ export default function PokemonCard({ name }: { name: string }) {
 
       {/* Schadensmultiplikatoren */}
       <div className="mt-2 text-sm text-white text-center space-y-1">
-        <p className="text-green-400">x4: {multipliers.x4.join(', ') || '–'}</p>
-        <p className="text-green-300">x2: {multipliers.x2.join(', ') || '–'}</p>
-        <p className="text-red-300">x0.5: {multipliers.x0_5.join(', ') || '–'}</p>
-        <p className="text-red-400">x0.25: {multipliers.x0_25.join(', ') || '–'}</p>
-        <p className="text-gray-500">x0: {multipliers.x0.join(', ') || '–'}</p>
+        <p className="text-green-400">x4: {multipliers.x4?.join(', ') || '–'}</p>
+        <p className="text-green-300">x2: {multipliers.x2?.join(', ') || '–'}</p>
+        <p className="text-red-300">x0.5: {multipliers.x0_5?.join(', ') || '–'}</p>
+        <p className="text-red-400">x0.25: {multipliers.x0_25?.join(', ') || '–'}</p>
+        <p className="text-gray-500">x0: {multipliers.x0?.join(', ') || '–'}</p>
       </div>
     </div>
   )
