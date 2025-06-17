@@ -4,7 +4,7 @@ import { pokemonTypes, damageMultipliers } from '@/utils/pokemonTypes'
 
 export default function PokemonCard({ name }: { name: string }) {
   const types = pokemonTypes(name)
-  const multipliers = damageMultipliers(types)
+  const multipliers = damageMultipliers(name)
 
   return (
     <div className="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col items-center w-60">
