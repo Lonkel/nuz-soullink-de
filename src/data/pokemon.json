@@ -1023,7 +1023,7 @@
   {
     "id": 122,
     "de": "Pantimos",
-    "en": "Mr. Mime",
+    "en": "Mr-mime",
     "types": [
       "Psycho",
       "Fee"
@@ -3712,7 +3712,7 @@
   {
     "id": 439,
     "de": "Pantimimi",
-    "en": "Mime Jr.",
+    "en": "Mime-jr.",
     "types": [
       "Psycho",
       "Fee"
@@ -7338,7 +7338,7 @@
   {
     "id": 865,
     "de": "Lauchzelot",
-    "en": "Sirfetch’d",
+    "en": "Sirfetchd",
     "types": [
       "Kampf"
     ]
@@ -7346,7 +7346,7 @@
   {
     "id": 866,
     "de": "Pantifrost",
-    "en": "Mr. Rime",
+    "en": "Mr-rime",
     "types": [
       "Eis",
       "Psycho"
