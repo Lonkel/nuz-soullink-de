@@ -10,7 +10,6 @@ import PokemonSelect         from '@/components/ui/PokemonSelect'
 import LocationSelect        from '@/components/ui/LocationSelect'
 import { sprite }            from '@/utils/sprites'
 import { pokemonTypes }      from '@/utils/pokemonTypes'
-import TypeGrid              from '@/components/TypeGrid'
 import { getAllEvolutions, getDexNumber } from '@/utils/evolution'
 
 const statusClasses = {
