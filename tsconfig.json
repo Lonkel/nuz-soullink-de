@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "scripts/**/*.ts", "src/data/**/*.json"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "scripts/**/*.ts", "src/data/**/*.json", "src/scripts/buildEvolutionMap.js"],
   "exclude": ["node_modules"]
 }
