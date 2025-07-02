@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:evo": "node src/scripts/buildEvolutionMap.js"
+    "build:evo": "node scripts/buildEvolutionMap.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
