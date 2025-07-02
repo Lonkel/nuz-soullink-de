@@ -1,40 +1,33 @@
 // src/utils/evolution.ts
 import pokedex from '@/data/pokemon.json'
+import rawEvoMap from '@/data/evolutionMap.json'
 
-/**
- * Entspricht der Struktur in deiner pokemon.json:
- * - id          → Nationaldex-Nummer
- * - de          → deutscher Name
- * - types       → Typen
- * - evolutions? → optionale Liste der Weiterentwicklungen (falls nicht im JSON vorhanden: leer)
- */
+/** Dex-JSON-Eintrag (deutsch/englisch + ID) */
 interface DexEntry {
-  id: number
   de: string
-  types: string[]
-  evolutions?: string[]
+  id: number
 }
 
-// 1) Map für Evolutionsstufen: "Schillok" → ["Schiggy","Turtok"]
-const EVOLUTION_MAP: Record<string, string[]> = Object.fromEntries(
-  (pokedex as DexEntry[]).map(p => [
-    p.de,
-    p.evolutions ?? [],        // falls evolutions fehlt, leeres Array
-  ]),
-)
+/** Das ist dein fertiges Evolutions-Mapping */
+const EVOLUTION_MAP: Record<string, string[]> =
+  rawEvoMap as Record<string, string[]>
 
-// 2) Map für Pokédex-Nummer: "Schillok" → 007
+/** Pokédex-Nummern-Map für Sortierung */
 const DEX_NR_MAP: Record<string, number> = Object.fromEntries(
   (pokedex as DexEntry[]).map(p => [p.de, p.id]),
 )
 
-/* Gibt Basisform + direkte Weiterentwicklungen zurück. */
+/**
+ * Gibt alle Formen einer Evolutions-Kette zurück:
+ * Basis-Form + alle anderen Ketten-Mitglieder.
+ */
 export function getAllEvolutions(name: string): string[] {
-  const evos = EVOLUTION_MAP[name] ?? []
-  return [name, ...evos]
+  return [name, ...(EVOLUTION_MAP[name] ?? [])]
 }
 
-/* Liefert die Nationaldex-Nummer (für Sortierung). */
+/**
+ * Liefert die Nationaldex-Nummer (für Sortierung).
+ */
 export function getDexNumber(name: string): number {
   return DEX_NR_MAP[name] ?? Number.MAX_SAFE_INTEGER
 }
